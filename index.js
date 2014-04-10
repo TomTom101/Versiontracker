@@ -50,13 +50,14 @@ JS.require('JS.Class', function(Class) {
         */
     	substractStoryPoints: function(points) {
     		this.story_points -= points;
-            console.log("subtracted " + points + " from " + this.name +", " + (this.story_points)+" left.")
+            console.log("subtracted " + points.toFixed(0) + " from " + this.name +", " + (this.story_points.toFixed(0))+" left.")
             if(this.story_points < 0) {
-                console.log("Saved "+ this.story_points +" in " + this.name)
+                console.log("Saved "+ this.story_points.toFixed(0) +" in " + this.name)
                 return Math.abs(this.story_points);
             }
             return 0;
     	},
+
     	compareTo: function(other) {
 	        if (this.story_points < other.story_points) return -1;
 	        if (this.story_points > other.story_points) return 1;
@@ -87,14 +88,17 @@ JS.require('JS.Class', function(Class) {
 
     	substractAvailableStoryPoints: function() {
     		var subtract = Sprint.velocity/this.versions.length();
-    		console.log("subtract "+subtract+", #versions: "+this.versions.length())
-            var sprint_starts = this.starts
+    		console.log("subtract "+subtract.toFixed(0)+", #versions: "+this.versions.length())
+            var remainder = 0;
             // if retrieved sorted by SPs asc, we could 
             var versionsByPointsAsc = this.versions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
-                version.should_start = sprint_starts;
-    			subtract += version.substractStoryPoints(subtract);
-            });
+                version.should_start = sprint.starts;
+                remainder = version.substractStoryPoints(subtract + remainder);
+            }, sprint);
+            if(remainder > 0) {
+                console.log("We have "+remainder+" points left in this sprint!")
+            }
     	}
     });
 
@@ -115,6 +119,7 @@ JS.require('JS.Class', function(Class) {
 
     versions.add(new Version("Relaunch 1.1", "2014-08-28", 41+17*13))
     versions.add(new Version("Relaunch 1.0", "2014-06-05", 421-40))
+    versions.add(new Version("Homepage 2.0", "2014-06-05", 50))
     versions.add(new Version("Product Finder 1.0", "2014-06-05", 91+3*13))
     versions.add(new Version("User Library 1.1", "2014-04-24", 136+5*13))
 
