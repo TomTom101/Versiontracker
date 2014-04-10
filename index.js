@@ -16,8 +16,14 @@ JS.require('JS.Class', function(Class) {
 	        for (var i = 0, n = arguments.length; i < n; i++)
 	            this._list.push(arguments[i]);
 	    },
-	    add: function(version) {
-	    	this._list.push(version);	
+        add: function(version) {
+            this._list.push(version);   
+        },
+        concat: function(versionArray) {
+            this._list = this._list.concat(versionArray);   
+        },
+        length: function() {
+	    	return this._list.length;
 	    },
 
 	    forEach: function(block, context) {
@@ -44,16 +50,16 @@ JS.require('JS.Class', function(Class) {
         */
     	substractStoryPoints: function(points) {
     		this.story_points -= points;
+            console.log("subtracted " + points + " from " + this.name +", " + (this.story_points)+" left.")
             if(this.story_points < 0) {
+                console.log("Saved "+ this.story_points +" in " + this.name)
                 return Math.abs(this.story_points);
             }
             return 0;
     	},
     	compareTo: function(other) {
-    		console.log(this.ends)
-    		console.log(other.ends)
-	        if (this.ends < other.ends) return -1;
-	        if (this.ends > other.ends) return 1;
+	        if (this.story_points < other.story_points) return -1;
+	        if (this.story_points > other.story_points) return 1;
 	        return 0;
 	    }
     });
@@ -63,7 +69,7 @@ JS.require('JS.Class', function(Class) {
     	   velocity: 160
         },
     	initialize: function(name, starts) {
-    		this.versions = [];
+    		this.versions = new VersionCollection();
     		this.name = name;
     		this.starts = new Date(starts).clearTime();
     		this.ends = new Date(starts).clearTime().addDays(21);
@@ -73,21 +79,22 @@ JS.require('JS.Class', function(Class) {
     	},
     	add: function(version) {
     		if(version instanceof Array) {
-    			this.versions = this.versions.concat(version)
+    			this.versions.concat(version)
     		} else {
-    			this.versions.push(version);
+    			this.versions.add(version);
     		}
     	},
 
     	substractAvailableStoryPoints: function() {
-    		var subtract = Sprint.velocity/this.versions.length;
-    		console.log("subtract "+subtract+", #versions: "+this.versions.length)
-
-            // if retrieved sorted by SPs asc, we could
-    		for (var i = 0, n = this.versions.length; i < n; i++) {
-                this.versions[i].should_start = this.starts;
-    			this.versions[i].substractStoryPoints(subtract)
-    		}
+    		var subtract = Sprint.velocity/this.versions.length();
+    		console.log("subtract "+subtract+", #versions: "+this.versions.length())
+            var sprint_starts = this.starts
+            // if retrieved sorted by SPs asc, we could 
+            var versionsByPointsAsc = this.versions.sort(Version.compare);
+            versionsByPointsAsc.forEach(function(version) {
+                version.should_start = sprint_starts;
+    			subtract += version.substractStoryPoints(subtract);
+            });
     	}
     });
 
@@ -126,13 +133,13 @@ JS.require('JS.Class', function(Class) {
 			sprint.add(stillRunning);
 			sprint.substractAvailableStoryPoints()
 		}
-    	console.log(sprint)
+    	//console.log(sprint)
     	console.log()
 
 
     }
 
-    console.log(versions)
+    //console.log(versions)
 
 
 
