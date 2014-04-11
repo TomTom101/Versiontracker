@@ -1,6 +1,20 @@
 // Using JS.require()
 
 var JS = require('jsclass');
+var _ = require('underscore');
+
+var request = require('request');
+request('http://localhost:8080/www/sprints.json', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+
+    var data = JSON.parse(body).sprints
+    var active_sprint = _.where(data, {state: 'ACTIVE'})
+    console.log(active_sprint) // Print the google web page.
+  } else {
+    
+    console.log(response.statusCode) 
+  }
+})
 
 JS.require('JS.Class', function(Class) {
 
@@ -37,70 +51,71 @@ JS.require('JS.Class', function(Class) {
     });
 
     var Version = new Class({
-    	include: [Comparable, Enumerable],
-    	initialize: function(name, ends, points) {
-    		this.name = name;
-            // The computed date of when work on the version must start in order to finish in time
-            this.should_start = undefined;
-    		this.ends = new Date(ends).clearTime();
-    		this.story_points = points;
+            include: [Comparable, Enumerable],
+            initialize: function(name, ends, points) {
+                this.name = name;
+                // The computed date of when work on the version must start in order to finish in time
+                this.should_start = undefined;
+                this.ends = new Date(ends).clearTime();
+                this.story_points = points;
 
-    	},
-    	/* Returns 0 if version is not finished after applying SPs and the remainder if finished.
-        */
-    	substractStoryPoints: function(points) {
-    		this.story_points -= points;
-            console.log("subtracted " + points.toFixed(0) + " from " + this.name +", " + (this.story_points.toFixed(0))+" left.")
-            if(this.story_points < 0) {
-                console.log("Saved "+ this.story_points.toFixed(0) +" in " + this.name)
-                return Math.abs(this.story_points);
+            },
+            /* Returns 0 if version is not finished after applying SPs and the remainder if finished.
+            */
+            substractStoryPoints: function(points) {
+                this.story_points -= points;
+                console.log("subtracted " + points.toFixed(0) + " from " + this.name +", " + (this.story_points.toFixed(0))+" left.")
+                if(this.story_points < 0) {
+                    console.log("Saved "+ this.story_points.toFixed(0) +" in " + this.name)
+                    return Math.abs(this.story_points);
+                }
+                return 0;
+            },
+
+            compareTo: function(other) {
+                if (this.story_points < other.story_points) return -1;
+                if (this.story_points > other.story_points) return 1;
+                return 0;
             }
-            return 0;
-    	},
+        });
 
-    	compareTo: function(other) {
-	        if (this.story_points < other.story_points) return -1;
-	        if (this.story_points > other.story_points) return 1;
-	        return 0;
-	    }
-    });
-
-    var Sprint = new Class({
-        extend: {
-    	   velocity: 160
-        },
-    	initialize: function(name, starts) {
-    		this.versions = new VersionCollection();
-    		this.name = name;
-    		this.starts = new Date(starts).clearTime();
-    		this.ends = new Date(starts).clearTime().addDays(21);
-    		//console.log(this.starts > this.ends)
+        var Sprint = new Class({
+            extend: {
+               velocity: 160
+            },
+            initialize: function(name, starts) {
+                this.versions = new VersionCollection();
+                this.name = name;
+                this.starts = new Date(starts).clearTime();
+                this.ends = new Date(starts).clearTime().addDays(21);
+                //console.log(this.starts > this.ends)
 
 
-    	},
-    	add: function(version) {
-    		if(version instanceof Array) {
-    			this.versions.concat(version)
-    		} else {
-    			this.versions.add(version);
-    		}
-    	},
+            },
+            add: function(version) {
+                if(version instanceof Array) {
+                    this.versions.concat(version)
+                } else {
+                    this.versions.add(version);
+                }
+            },
 
-    	substractAvailableStoryPoints: function() {
-    		var subtract = Sprint.velocity/this.versions.length();
-    		console.log("subtract "+subtract.toFixed(0)+", #versions: "+this.versions.length())
-            var remainder = 0;
-            // if retrieved sorted by SPs asc, we could 
-            var versionsByPointsAsc = this.versions.sort(Version.compare);
-            versionsByPointsAsc.forEach(function(version) {
-                version.should_start = sprint.starts;
-                remainder = version.substractStoryPoints(subtract + remainder);
-            }, sprint);
-            if(remainder > 0) {
-                console.log("We have "+remainder+" points left in this sprint!")
+            substractAvailableStoryPoints: function() {
+                var subtract = Sprint.velocity/this.versions.length();
+                console.log("subtract "+subtract.toFixed(0)+", #versions: "+this.versions.length())
+                var remainder = 0;
+                // if retrieved sorted by SPs asc, we could 
+                var versionsByPointsAsc = this.versions.sort(Version.compare);
+                versionsByPointsAsc.forEach(function(version) {
+                    version.should_start = sprint.starts;
+                    remainder = version.substractStoryPoints(subtract + remainder);
+                }, sprint);
+                if(remainder > 0) {
+                    console.log("We have "+remainder+" points left in this sprint!")
+                }
             }
-    	}
-    });
+        });
+    
 
     var sprints = []
     var _first = new Date("2014-02-24");
@@ -111,7 +126,7 @@ JS.require('JS.Class', function(Class) {
    		if(sprint) {
    			start_date = new Date(sprint.ends)//.addDays(3)
    		}
-   		var sprint = new Sprint("2."+i+".0", start_date);
+   		var sprint = new Sprint("v2."+i+".0", start_date);
     	sprints.push(sprint);
     }
 
