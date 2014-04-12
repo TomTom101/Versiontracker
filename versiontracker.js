@@ -1,13 +1,13 @@
-// complains about VersionCollection, if used w/ var, cannot be seen in the html file. Must be exported??
+// complains about Collection, if used w/ var, cannot be seen in the html file. Must be exported??
 
 //"use strict";
 
-(function() {
+;(function() {
     var root = this
     var previous_versiontracker = root.versiontracker
     var has_require = typeof require !== 'undefined'
 
-    VersionCollection = new JS.Class({
+    Collection = new JS.Class({
         include: [JS.Comparable, JS.Enumerable],
         initialize: function() {
             this._list = [];
@@ -39,7 +39,7 @@
         initialize: function(name, ends, points) {
             this.name = name;
             // The computed date of when work on the version must start in order to finish in time
-            this.should_start = undefined;
+            this.must_start = undefined;
             this.ends = new Date(ends).clearTime();
             this.story_points = points;
 
@@ -64,11 +64,12 @@
     });
 
     Sprint = new JS.Class({
+    	include: [JS.Comparable],
         extend: {
             velocity: 160
         },
         initialize: function(name, starts) {
-            this.versions = new VersionCollection();
+            this.versions = new Collection();
             this.name = name;
             this.starts = new Date(starts).clearTime();
             this.ends = new Date(starts).addDays(21).clearTime();
@@ -91,9 +92,9 @@
             // if retrieved sorted by SPs asc, we could
             var versionsByPointsAsc = this.versions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
-                version.should_start = sprint.starts;
+                version.must_start = this.starts;
                 remainder = version.substractStoryPoints(subtract + remainder);
-            }, sprint);
+            }, this);
             if (remainder > 0) {
                 console.log("We have " + remainder + " points left in this sprint!")
             }
@@ -103,18 +104,9 @@
     versiontracker = root.versiontracker = function() {
         var self = {}
 
-        //      var versions = new VersionCollection()
-
-        //versions.add(new Version("Relaunch 1.1", "2014-08-28", 41+17*13))
-        //var version = new Version("Relaunch 1.1", "2014-08-28", 41+17*13)
-
-        self.hello = function() {
-            console.log("hello world");
-        },
-
         self.run = function(sprints, versions) {
-            for (var i = sprints.length - 1; i >= 0; i--) {
-                sprint = sprints[i]
+        	sprints.reverseForEach(function(sprint) {
+
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
                     " ends " + sprint.ends.toYMD())
@@ -124,11 +116,9 @@
                     return (version.story_points > 0 && version.ends.compareTo(sprint.ends) > -1);
                 });
 
-                if (i > 0) {
-                    sprint.add(stillRunning);
-                    sprint.substractAvailableStoryPoints()
-                }
-            }
+                sprint.add(stillRunning);
+                sprint.substractAvailableStoryPoints()
+        	});
         }
 
         return self;

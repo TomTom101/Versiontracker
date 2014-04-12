@@ -11,7 +11,7 @@
 
     JS.packages(function() { with(this) {
       file('../versiontracker.js')
-        .provides('versiontracker', 'VersionCollection', 'Version', 'Sprint')
+        .provides('versiontracker', 'Collection', 'Version', 'Sprint')
         .requires('JS.Class', 'JS.Enumerable', 'JS.Comparable', '_');
 
       file('../node_modules/underscore/underscore-min.js')
@@ -19,7 +19,7 @@
     }});
 
     JS.require('versiontracker', function() {
-      var versions = new VersionCollection()
+      var versions = new Collection()
 
       versions.add(new Version("Relaunch 1.1", "2014-08-28", 41+17*13))
       versions.add(new Version("Relaunch 1.0", "2014-06-05", 421-40))
@@ -29,7 +29,7 @@
 
 
 
-      var sprints = []
+      var sprints = new Collection()
       var _first = new Date("2014-02-24");
 
       // Need at least so many sprints to cover all versions
@@ -39,7 +39,7 @@
           start_date = new Date(sprint.ends)//.addDays(3)
         }
         var sprint = new Sprint("v2."+i+".0", start_date);
-        sprints.push(sprint);
+        sprints.add(sprint);
       }
 
       versiontracker().run(sprints, versions);
