@@ -1,0 +1,17 @@
+#content [class^=col-]:not(:last-child) {
+}
+
+#content div.row:not(:last-child) {
+    border-top: 1px dotted grey;
+
+}
+
+.progress {
+    margin-top: 10px;
+}
+
+#content .panel .row:last-child {
+    border-top: 1px solid grey;
+    font-weight: bold;
+
+}
