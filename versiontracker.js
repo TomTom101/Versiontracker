@@ -39,9 +39,10 @@
         initialize: function(name, ends, points) {
             this.name = name;
             // The computed date of when work on the version must start in order to finish in time
-            this.must_start = undefined;
+            this.first_sprint = undefined;
+            this.last_sprint = undefined;
             this.ends = new Date(ends).clearTime();
-            this.story_points = points;
+            this.story_points = this.inital_storypoints = points;
 
         },
         /* Returns 0 if version is not finished after applying SPs and the remainder if finished.
@@ -60,19 +61,28 @@
             if (this.story_points < other.story_points) return -1;
             if (this.story_points > other.story_points) return 1;
             return 0;
+        },
+        getInitialStoryPoints: function() {
+        	return this.inital_storypoints.toFixed(0)
+        },
+        getCurrentStoryPoints: function() {
+        	return Math.max(0, this.story_points.toFixed(0))
         }
     });
 
     Sprint = new JS.Class({
     	include: [JS.Comparable],
         extend: {
-            velocity: 160
+            velocity: 160,
+            days: 21,
+            index: 0
         },
         initialize: function(name, starts) {
             this.versions = new Collection();
+            this.index = Sprint.index++;
             this.name = name;
             this.starts = new Date(starts).clearTime();
-            this.ends = new Date(starts).addDays(21).clearTime();
+            this.ends = new Date(starts).addDays(Sprint.days).clearTime();
             //console.log(this.starts > this.ends)
 
 
@@ -92,7 +102,10 @@
             // if retrieved sorted by SPs asc, we could
             var versionsByPointsAsc = this.versions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
-                version.must_start = this.starts;
+            	if(version.last_sprint == undefined) {
+                	version.last_sprint = this;
+            	}
+                version.first_sprint = this;
                 remainder = version.substractStoryPoints(subtract + remainder);
             }, this);
             if (remainder > 0) {
@@ -106,7 +119,6 @@
 
         self.run = function(sprints, versions) {
         	sprints.reverseForEach(function(sprint) {
-
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
                     " ends " + sprint.ends.toYMD())
@@ -132,7 +144,5 @@
     } else {
         root.versiontracker = versiontracker
     }
-
-
 
 }).call(this);

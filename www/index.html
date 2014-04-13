@@ -4,7 +4,14 @@
 
   <script src="../node_modules/jsclass/src/loader-browser.js"></script>
   <script src="../node_modules/date-utils/lib/date-utils.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
 
@@ -12,10 +19,16 @@
     JS.packages(function() { with(this) {
       file('../versiontracker.js')
         .provides('versiontracker', 'Collection', 'Version', 'Sprint')
-        .requires('JS.Class', 'JS.Enumerable', 'JS.Comparable', '_');
+        .requires('JS.Class', 'JS.Enumerable', 'JS.Comparable', '_', 'Handlebars', 'jQuery');
 
-      file('../node_modules/underscore/underscore-min.js')
+      file('//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js')
+        .provides('jQuery');
+
+      file('//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js')
         .provides('_');
+
+      file('//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js')
+        .provides('Handlebars');
     }});
 
     JS.require('versiontracker', function() {
@@ -42,9 +55,63 @@
         sprints.add(sprint);
       }
 
+    Handlebars.registerHelper("debug", function(optionalValue) {
+      console.log("\nCurrent Context");
+      console.log("====================");
+      console.log(this);
+
+      if (arguments.length > 1) {
+        console.log("Value");
+        console.log("====================");
+        console.log(optionalValue);
+      }
+    });
+
+    Handlebars.registerHelper('simpleDate', function(date) {
+    return date.toFormat('MMM D')
+  });
+
+    function run(e) {
+      $("#content").html('loading…');
+
       versiontracker().run(sprints, versions);
+      var version_src = $("#version-template").html();
+      var version_tpl = Handlebars.compile(version_src);
+      $("#content").html(version_tpl(versions));
+
+    }
+    $( document ).ready(function() {
+      $( "#run" ).click(run);
+      run();
+    });
+
+
+
     });
   </script>
 </head>
-<body></body>
+<body>
+<script id="version-template" type="text/x-handlebars-template">
+<div class="container">
+<ul class="list-group">
+{{#_list}}
+  <li class="list-group-item">
+    <span class="badge">{{this.getInitialStoryPoints}}</span>
+    <span class="badge">{{this.getCurrentStoryPoints}}</span>
+    <h5>{{name}}</h5>
+    {{simpleDate ends}}<br>
+    First Sprint {{first_sprint.name}} starting {{simpleDate first_sprint.starts}} #{{first_sprint.index}}<br>
+    Last Sprint {{last_sprint.name}} ending {{simpleDate last_sprint.ends}} #{{last_sprint.index}}
+    </li>
+{{/_list}}
+</ul>
+</div>
+</script>
+
+<div class="container" id="content"></div>
+<button type="button" class="btn btn-default" id="run">Do it</button>
+
+
+
+</body>
 </html>
