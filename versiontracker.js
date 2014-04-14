@@ -1,5 +1,4 @@
 // complains about Collection, if used w/ var, cannot be seen in the html file. Must be exported??
-
 //"use strict";
 
 ;(function() {
@@ -39,6 +38,12 @@
                 return sprint == obj.sprint
             });
             return _list.map(function(obj) {return obj.version})
+        },
+        getSprintsForVersion: function(version) {
+            var _list = this.select(function(obj) {
+                return version == obj.version
+            });
+            return _list.map(function(obj) {return obj.sprint})
         },
         getLink: function(sprint, version) {
 <<<<<<< HEAD
@@ -158,6 +163,8 @@
         self.sprintmanager = new Sprintmanager()
 
         self.init = function(sprints, versions) {
+            self.sprints = sprints
+            // Go through each sprint, from last to first
         	sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
@@ -174,42 +181,11 @@
                 activeVersions.forEach(function(version) {
                     self.sprintmanager.add({version: version, sprint: sprint})
                 })
-                // var l  = self.getLinks(sprint)
-                // console.log(typeof l)
-                // console.log(l.length)
-                // if (l.length > 0) {
-
-                //  l[0].value = 1234
-                // }
-                console.log()
-                //console.log(self.getVersionsForSprint(sprint))
-
+                // deduct storypoints from each version in a sprint
+                // the version will be updated with the remaining story points and may on may not be 
+                // running/active in the next sprint
                 sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
             });
-        }
-
-        self.getLink = function(sprint, version) {
-
-            if (sprint instanceof Sprint && version instanceof Version) {
-                var _list = self.sprintmanager.select(function(obj) {
-                    return sprint == obj.sprint && version == obj.version
-                });
-                return _list
-            }
-        }
-
-        self.getVersionsForSprint = function(sprint) {
-            var _list = self.sprintmanager.select(function(obj) {
-                return sprint == obj.sprint
-            });
-            return _list.map(function(obj) {return obj.version})
-        }
-
-        self.getSprintsForVersion = function(version) {
-            var _list = self.sprintmanager.select(function(obj) {
-                return version == obj.version
-            });
-            return _list.map(function(obj) {return obj.sprint})
         }
 
         self.solve = function() {
