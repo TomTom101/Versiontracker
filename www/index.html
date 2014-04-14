@@ -77,10 +77,11 @@
       return this.last_sprint.index - this.first_sprint.index + 1
     });
 
-    function run(e) {
+    function init(e) {
       $("#content").html('loading…');
-
-      versiontracker().run(sprints, versions);
+      var vt = versiontracker()
+      vt.init(sprints, versions);
+      vt.solve();
       var version_src = $("#version-template").html();
       var version_tpl = Handlebars.compile(version_src);
       var table = {versions: versions, sprints: sprints}
@@ -88,8 +89,8 @@
 
     }
     $( document ).ready(function() {
-      $( "#run" ).click(run);
-      run();
+      $( "#run" ).click(init);
+      init();
     });
 
 
@@ -134,7 +135,7 @@
     <div class="col-md-2">{{name}}</div>
     <div class="col-md-{{duration this}} col-md-offset-{{first_sprint.index}}">
       <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+        <div class="progress-bar" role="progressbar" style="width: 100%;">
         <span class="sr-only">100</span>
         </div>
       </div>

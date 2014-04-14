@@ -18,7 +18,7 @@
             this._list.push(version);
         },
         concat: function(versionArray) {
-            this._list = this._list.concat(versionArray);
+            this._list.push.apply(this._list, versionArray);
         },
         length: function() {
             return this._list.length;
@@ -33,6 +33,8 @@
             return this;
         }
     });
+
+
 
     Version = new JS.Class({
         include: [JS.Comparable, JS.Enumerable],
@@ -78,7 +80,7 @@
             index: 0
         },
         initialize: function(name, starts) {
-            this.versions = new Collection();
+            //this.versions = new Collection();
             this.index = Sprint.index++;
             this.name = name;
             this.starts = new Date(starts).clearTime();
@@ -95,12 +97,12 @@
             }
         },
 
-        substractAvailableStoryPoints: function() {
-            var subtract = Sprint.velocity / this.versions.length();
-            console.log("subtract " + subtract.toFixed(0) + ", #versions: " + this.versions.length())
+        substractAvailableStoryPoints: function(activeVersions) {
+            var subtract = Sprint.velocity / activeVersions.length();
+            console.log("subtract " + subtract.toFixed(0) + ", #versions: " + activeVersions.length())
             var remainder = 0;
             // if retrieved sorted by SPs asc, we could
-            var versionsByPointsAsc = this.versions.sort(Version.compare);
+            var versionsByPointsAsc = activeVersions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
             	if(version.last_sprint == undefined) {
                 	version.last_sprint = this;
@@ -116,21 +118,72 @@
 
     versiontracker = root.versiontracker = function() {
         var self = {}
+        self.sprintmanager = new Collection()
 
-        self.run = function(sprints, versions) {
+        self.init = function(sprints, versions) {
         	sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
                     " ends " + sprint.ends.toYMD())
 
                 // We must work on everything that is not finished and finshes with or after the sprint
-                var stillRunning = versions.select(function(version) {
+                var _activeVersions = versions.select(function(version) {
                     return (version.story_points > 0 && version.ends.compareTo(sprint.ends) > -1);
                 });
 
-                sprint.add(stillRunning);
-                sprint.substractAvailableStoryPoints()
-        	});
+                // Quite clumsy to turn this array into a collection just to be able to do a forEach
+                var activeVersions = new Collection()
+                activeVersions.concat(_activeVersions)
+                activeVersions.forEach(function(version) {
+                    self.sprintmanager.add({version: version, sprint: sprint})
+                })
+                var l  = self.getLinks(sprint)
+                console.log(typeof l)
+                console.log(l.length)
+                if (l.length > 0) {
+
+                l[0].value = 1234
+                }
+                console.log()
+                //console.log(self.getVersionsForSprint(sprint))
+
+                sprint.substractAvailableStoryPoints(activeVersions)
+            });
+        }
+
+        self.getLinks = function(object) {
+
+            if (object instanceof Sprint) {
+                return self._getVersionsForSprint(object, false)
+            }
+            if (object instanceof Version) {
+                return self._getSprintsForVersion(object, false)
+            }
+        }
+
+        self._getVersionsForSprint = function(sprint, deep) {
+            var _list = self.sprintmanager.select(function(obj) {
+                return sprint == obj.sprint
+            });
+            if(typeof deep !='undefined' && deep === true) {
+                return _list.map(function(obj) {return obj.version})
+            }
+            return _list
+        }
+
+        self._getSprintsForVersion = function(version, deep) {
+            var _list = self.sprintmanager.select(function(obj) {
+                return version == obj.version
+            });
+            if(typeof deep !='undefined' && deep === true) {
+                return _list.map(function(obj) {return obj.sprint})
+            }
+            return _list
+        }
+
+        self.solve = function() {
+
+            console.log(self.sprintmanager)
         }
 
         return self;
