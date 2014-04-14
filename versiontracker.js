@@ -23,7 +23,6 @@
         length: function() {
             return this._list.length;
         },
-
         forEach: function(block, context) {
             if (!block) return this.enumFor('forEach');
 
@@ -42,7 +41,11 @@
             return _list.map(function(obj) {return obj.version})
         },
         getLink: function(sprint, version) {
+<<<<<<< HEAD
 
+=======
+            // Returns only one item (there can be only one result)
+>>>>>>> added a sprintmanager class
             if (sprint instanceof Sprint && version instanceof Version) {
                 var _list = this.select(function(obj) {
                     return sprint == obj.sprint && version == obj.version
@@ -66,18 +69,21 @@
             this.story_points = this.inital_storypoints = points;
 
         },
-        /* Returns 0 if version is not finished after applying SPs and the remainder if finished.
+        /* 
+            Returns remaining (or surplus of) story points after using them towards the version.
          */
         substractStoryPoints: function(points) {
             this.story_points -= points;
             console.log("subtracted " + points.toFixed(0) + " from " + this.name + ", " + (this.story_points.toFixed(0)) + " left.")
             if (this.story_points < 0) {
                 console.log("Saved " + this.story_points.toFixed(0) + " in " + this.name)
+<<<<<<< HEAD
                 //return Math.abs(this.story_points);
+=======
+>>>>>>> added a sprintmanager class
             }
             return this.story_points;
         },
-
         compareTo: function(other) {
             if (this.story_points < other.story_points) return -1;
             if (this.story_points > other.story_points) return 1;
