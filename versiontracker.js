@@ -34,7 +34,26 @@
         }
     });
 
+    Sprintmanager = new JS.Class(Collection, {
+        getVersionsForSprint: function(sprint) {
+            var _list = this.select(function(obj) {
+                return sprint == obj.sprint
+            });
+            return _list.map(function(obj) {return obj.version})
+        },
+        getLink: function(sprint, version) {
 
+            if (sprint instanceof Sprint && version instanceof Version) {
+                var _list = this.select(function(obj) {
+                    return sprint == obj.sprint && version == obj.version
+                });
+                return _list[0]
+            }
+        },
+        setForVersionInSprint: function(sprint, version, obj) {
+            jQuery.extend(this.getLink(sprint, version), obj)
+        }
+    });
 
     Version = new JS.Class({
         include: [JS.Comparable, JS.Enumerable],
@@ -54,9 +73,9 @@
             console.log("subtracted " + points.toFixed(0) + " from " + this.name + ", " + (this.story_points.toFixed(0)) + " left.")
             if (this.story_points < 0) {
                 console.log("Saved " + this.story_points.toFixed(0) + " in " + this.name)
-                return Math.abs(this.story_points);
+                //return Math.abs(this.story_points);
             }
-            return 0;
+            return this.story_points;
         },
 
         compareTo: function(other) {
@@ -86,8 +105,6 @@
             this.starts = new Date(starts).clearTime();
             this.ends = new Date(starts).addDays(Sprint.days).clearTime();
             //console.log(this.starts > this.ends)
-
-
         },
         add: function(version) {
             if (version instanceof Array) {
@@ -96,11 +113,10 @@
                 this.versions.add(version);
             }
         },
-
-        substractAvailableStoryPoints: function(activeVersions) {
-            var subtract = Sprint.velocity / activeVersions.length();
-            console.log("subtract " + subtract.toFixed(0) + ", #versions: " + activeVersions.length())
-            var remainder = 0;
+        substractAvailableStoryPoints: function(vt, activeVersions) {
+            var subtract = Sprint.velocity / activeVersions.length;
+            console.log("subtract " + subtract.toFixed(0) + ", #versions: " + activeVersions.length)
+            var remainingStoryPoints, remainder = 0;
             // if retrieved sorted by SPs asc, we could
             var versionsByPointsAsc = activeVersions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
@@ -108,9 +124,24 @@
                 	version.last_sprint = this;
             	}
                 version.first_sprint = this;
-                remainder = version.substractStoryPoints(subtract + remainder);
+                // remainder is added in the previous loop
+                var usedOnVersion = subtract + remainder
+                remainingStoryPoints = version.substractStoryPoints(usedOnVersion);
+                if(remainingStoryPoints < 0) {
+                    // if the version had less SPs left, we use the remainder towards the next version in the sprint
+                    remainder = Math.abs(remainingStoryPoints)
+                } else {
+                    remainder = 0
+                }
+                // Sets the number of stroy points used towards a version in a sprint
+                vt.sprintmanager.setForVersionInSprint(this, version,
+                    {
+                        story_points: (usedOnVersion - remainder),
+                        remaining: Math.max(0, remainingStoryPoints)
+                    })
             }, this);
             if (remainder > 0) {
+                // No more versions we could use the remainder for?
                 console.log("We have " + remainder + " points left in this sprint!")
             }
         }
@@ -118,7 +149,7 @@
 
     versiontracker = root.versiontracker = function() {
         var self = {}
-        self.sprintmanager = new Collection()
+        self.sprintmanager = new Sprintmanager()
 
         self.init = function(sprints, versions) {
         	sprints.reverseForEach(function(sprint) {
@@ -137,48 +168,42 @@
                 activeVersions.forEach(function(version) {
                     self.sprintmanager.add({version: version, sprint: sprint})
                 })
-                var l  = self.getLinks(sprint)
-                console.log(typeof l)
-                console.log(l.length)
-                if (l.length > 0) {
+                // var l  = self.getLinks(sprint)
+                // console.log(typeof l)
+                // console.log(l.length)
+                // if (l.length > 0) {
 
-                l[0].value = 1234
-                }
+                //  l[0].value = 1234
+                // }
                 console.log()
                 //console.log(self.getVersionsForSprint(sprint))
 
-                sprint.substractAvailableStoryPoints(activeVersions)
+                sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
             });
         }
 
-        self.getLinks = function(object) {
+        self.getLink = function(sprint, version) {
 
-            if (object instanceof Sprint) {
-                return self._getVersionsForSprint(object, false)
-            }
-            if (object instanceof Version) {
-                return self._getSprintsForVersion(object, false)
+            if (sprint instanceof Sprint && version instanceof Version) {
+                var _list = self.sprintmanager.select(function(obj) {
+                    return sprint == obj.sprint && version == obj.version
+                });
+                return _list
             }
         }
 
-        self._getVersionsForSprint = function(sprint, deep) {
+        self.getVersionsForSprint = function(sprint) {
             var _list = self.sprintmanager.select(function(obj) {
                 return sprint == obj.sprint
             });
-            if(typeof deep !='undefined' && deep === true) {
-                return _list.map(function(obj) {return obj.version})
-            }
-            return _list
+            return _list.map(function(obj) {return obj.version})
         }
 
-        self._getSprintsForVersion = function(version, deep) {
+        self.getSprintsForVersion = function(version) {
             var _list = self.sprintmanager.select(function(obj) {
                 return version == obj.version
             });
-            if(typeof deep !='undefined' && deep === true) {
-                return _list.map(function(obj) {return obj.sprint})
-            }
-            return _list
+            return _list.map(function(obj) {return obj.sprint})
         }
 
         self.solve = function() {
