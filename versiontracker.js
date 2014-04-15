@@ -47,11 +47,7 @@
             return _list.map(function(obj) {return obj.sprint})
         },
         getLink: function(sprint, version) {
-<<<<<<< HEAD
-
-=======
             // Returns only one item (there can be only one result)
->>>>>>> added a sprintmanager class
             if (sprint instanceof Sprint && version instanceof Version) {
                 var _list = this.select(function(obj) {
                     return sprint == obj.sprint && version == obj.version
@@ -86,10 +82,6 @@
             console.log("subtracted " + points.toFixed(0) + " from " + this.name + ", " + (this.story_points.toFixed(0)) + " left.")
             if (this.story_points < 0) {
                 console.log("Saved " + this.story_points.toFixed(0) + " in " + this.name)
-<<<<<<< HEAD
-                //return Math.abs(this.story_points);
-=======
->>>>>>> added a sprintmanager class
             }
             return this.story_points;
         },
