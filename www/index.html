@@ -33,16 +33,6 @@
     }});
 
     JS.require('versiontracker', function() {
-      var versions = new Collection()
-
-      versions.add(new Version("User Library 1.1", "2014-04-24", 136, 5))
-      versions.add(new Version("Relaunch 1.0", "2014-06-05", 421-40, 0))
-      versions.add(new Version("Product Finder 1.0", "2014-06-05", 91, 3))
-      versions.add(new Version("Homepage 2.0", "2014-06-05", 50, 0))
-      versions.add(new Version("Relaunch 1.1", "2014-08-28", 41, 17))
-
-
-
       var sprints = new Collection()
       var _first = new Date("2014-04-07");
 
@@ -91,8 +81,8 @@
       function init(e) {
         $("#content").html('loading…');
         var vt = versiontracker()
-        vt.init(sprints, versions);
-        vt.solve();
+        vt.init()
+        vt.solve(sprints);
         var version_src = $("#version-template").html();
         var version_tpl = Handlebars.compile(version_src);
         var table = {versions: vt.getActiveVersions(), sprints: sprints}
@@ -145,6 +135,7 @@
   <div class="row">
     <div class="col-md-2">
     <div>{{name}}</div>
+    <div><small>Due: {{simpleDate ends}}</small></div>
     <div><small>SP: {{inital_storypoints}}</small></div>
     <div><small>Unestimated guess: {{unestimated_points}}</small></div>
     <div><small>Left: {{story_points}}</small></div>

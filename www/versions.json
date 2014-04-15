@@ -1,0 +1,585 @@
+[
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11235",
+    "id": "11235",
+    "name": "1.0.1 15 Jahre Promo",
+    "archived": true,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11204",
+    "id": "11204",
+    "name": "1.0.0 KW 50/2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2011-12-15",
+    "userReleaseDate": "15/Dec/11",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11898",
+    "id": "11898",
+    "name": "1.0.1 KW 51/1",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2011-12-19",
+    "userReleaseDate": "19/Dec/11",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11899",
+    "id": "11899",
+    "name": "1.0.2 KW 51/2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2011-12-22",
+    "userReleaseDate": "22/Dec/11",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11901",
+    "id": "11901",
+    "name": "1.0.3 KW 52/1",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2011-12-26",
+    "userReleaseDate": "26/Dec/11",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11902",
+    "id": "11902",
+    "name": "1.0.4 KW 52/2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2011-12-29",
+    "userReleaseDate": "29/Dec/11",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11960",
+    "id": "11960",
+    "name": "2.12.01.2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-01-05",
+    "userReleaseDate": "05/Jan/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11963",
+    "id": "11963",
+    "name": "2.12.02.1",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-01-09",
+    "userReleaseDate": "09/Jan/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11964",
+    "id": "11964",
+    "description": "Version 2 der Website (Relaunch wird 3), Monat 12, KW 02, 2. Release",
+    "name": "2.12.02.2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-01-12",
+    "userReleaseDate": "12/Jan/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12081",
+    "id": "12081",
+    "name": "2.12.03.1",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12082",
+    "id": "12082",
+    "name": "2.12.03.2",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12083",
+    "id": "12083",
+    "name": "2.12.04.1",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12084",
+    "id": "12084",
+    "name": "2.12.04.2",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12171",
+    "id": "12171",
+    "name": "12.01.26",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-01-26",
+    "userReleaseDate": "26/Jan/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12172",
+    "id": "12172",
+    "name": "12.01.31",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-01-31",
+    "userReleaseDate": "31/Jan/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12173",
+    "id": "12173",
+    "name": "12.02.02",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-02",
+    "userReleaseDate": "02/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12174",
+    "id": "12174",
+    "name": "12.02.07",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-07",
+    "userReleaseDate": "07/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12384",
+    "id": "12384",
+    "name": "12.02.09",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-09",
+    "userReleaseDate": "09/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12385",
+    "id": "12385",
+    "name": "12.02.14",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-14",
+    "userReleaseDate": "14/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12386",
+    "id": "12386",
+    "name": "12.02.16",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-16",
+    "userReleaseDate": "16/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12387",
+    "id": "12387",
+    "name": "12.02.21",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-21",
+    "userReleaseDate": "21/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12388",
+    "id": "12388",
+    "name": "12.02.23",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-23",
+    "userReleaseDate": "23/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12389",
+    "id": "12389",
+    "name": "12.02.28",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-02-28",
+    "userReleaseDate": "28/Feb/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/12390",
+    "id": "12390",
+    "name": "12.03.01",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2012-03-01",
+    "userReleaseDate": "01/Mar/12",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11894",
+    "id": "11894",
+    "name": "Mobile: Compatibility",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/11972",
+    "id": "11972",
+    "name": "Unversioned",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/13778",
+    "id": "13778",
+    "name": "Abandoned shopping carts",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/14680",
+    "id": "14680",
+    "name": "Japan KK",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/13160",
+    "id": "13160",
+    "name": "Support form",
+    "archived": true,
+    "released": true,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/16560",
+    "id": "16560",
+    "name": "v1.1.0",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-03-04",
+    "userReleaseDate": "04/Mar/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/16668",
+    "id": "16668",
+    "name": "v1.2.0",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-03-28",
+    "userReleaseDate": "28/Mar/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/16669",
+    "id": "16669",
+    "name": "v1.3.0",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-04-19",
+    "userReleaseDate": "19/Apr/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/18961",
+    "id": "18961",
+    "name": "v1.5.0",
+    "archived": true,
+    "released": true,
+    "startDate": "2013-06-03",
+    "releaseDate": "2013-06-19",
+    "userStartDate": "03/Jun/13",
+    "userReleaseDate": "19/Jun/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/18960",
+    "id": "18960",
+    "name": "v1.5.1",
+    "archived": true,
+    "released": true,
+    "startDate": "2013-06-24",
+    "releaseDate": "2013-07-18",
+    "userStartDate": "24/Jun/13",
+    "userReleaseDate": "18/Jul/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/19185",
+    "id": "19185",
+    "name": "v1.5.2",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-08-08",
+    "userReleaseDate": "08/Aug/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/19474",
+    "id": "19474",
+    "name": "v1.5.3",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-08-29",
+    "userReleaseDate": "29/Aug/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/19761",
+    "id": "19761",
+    "name": "v1.5.4",
+    "archived": true,
+    "released": true,
+    "releaseDate": "2013-09-26",
+    "userReleaseDate": "26/Sep/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/20063",
+    "id": "20063",
+    "name": "v1.5.5",
+    "archived": true,
+    "released": false,
+    "releaseDate": "2013-10-17",
+    "overdue": false,
+    "userReleaseDate": "17/Oct/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/20474",
+    "id": "20474",
+    "name": "v1.5.6",
+    "archived": true,
+    "released": false,
+    "releaseDate": "2019-11-07",
+    "overdue": false,
+    "userReleaseDate": "07/Nov/19",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/20475",
+    "id": "20475",
+    "name": "v1.5.7",
+    "archived": true,
+    "released": false,
+    "releaseDate": "2013-11-28",
+    "overdue": false,
+    "userReleaseDate": "28/Nov/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/20476",
+    "id": "20476",
+    "name": "v1.5.8",
+    "archived": true,
+    "released": false,
+    "releaseDate": "2013-12-19",
+    "overdue": false,
+    "userReleaseDate": "19/Dec/13",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/21667",
+    "id": "21667",
+    "name": "v2.1.0",
+    "archived": true,
+    "released": true,
+    "startDate": "2014-01-13",
+    "releaseDate": "2014-01-27",
+    "userStartDate": "13/Jan/14",
+    "userReleaseDate": "27/Jan/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22577",
+    "id": "22577",
+    "description": "Go-live critical tickets for the UL",
+    "name": "User Library 1.0",
+    "archived": false,
+    "released": true,
+    "startDate": "2013-10-01",
+    "releaseDate": "2014-02-19",
+    "userStartDate": "01/Oct/13",
+    "userReleaseDate": "19/Feb/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22578",
+    "id": "22578",
+    "description": "The version that is required for the marketing campaign",
+    "name": "User Library 1.1",
+    "archived": false,
+    "released": false,
+    "startDate": "2014-02-03",
+    "releaseDate": "2014-04-24",
+    "overdue": false,
+    "userStartDate": "03/Feb/14",
+    "userReleaseDate": "24/Apr/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22581",
+    "id": "22581",
+    "description": "Offering an optimized shopping experience on mobile phones, esp. focusing the Japanese market.",
+    "name": "Responsive Shopping 1.0",
+    "archived": false,
+    "released": true,
+    "releaseDate": "2014-02-03",
+    "userReleaseDate": "03/Feb/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22660",
+    "id": "22660",
+    "name": "Knowledge Base 1.1",
+    "archived": false,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22869",
+    "id": "22869",
+    "description": "The next feature release after the official announcement in April",
+    "name": "User Library 1.5",
+    "archived": true,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22870",
+    "id": "22870",
+    "description": "Non checkout critical issues, feature release",
+    "name": "Responsive Shopping 1.1",
+    "archived": false,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22872",
+    "id": "22872",
+    "description": "Go-live critical issues for the website Relaunch",
+    "name": "Relaunch 1.0",
+    "archived": false,
+    "released": false,
+    "releaseDate": "2014-06-05",
+    "overdue": false,
+    "userReleaseDate": "05/Jun/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/22873",
+    "id": "22873",
+    "description": "Typo3 editable page allowing preview",
+    "name": "Relaunch 0.5",
+    "archived": false,
+    "released": false,
+    "releaseDate": "2014-04-03",
+    "overdue": true,
+    "userReleaseDate": "03/Apr/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/23074",
+    "id": "23074",
+    "name": "Forum 1.0",
+    "archived": false,
+    "released": true,
+    "releaseDate": "2014-02-26",
+    "userReleaseDate": "26/Feb/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/23075",
+    "id": "23075",
+    "name": "Forum 1.1",
+    "archived": true,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/23361",
+    "id": "23361",
+    "description": "The first live version of the webform as described here https://confluence.bln.native-instruments.de/x/rQtUAw",
+    "name": "Hardware return form 1.0",
+    "archived": false,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/23370",
+    "id": "23370",
+    "description": "Migration of the demo download handling from the co servers including some usability improvements",
+    "name": "Demo Downloads 2.0",
+    "archived": false,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/23968",
+    "id": "23968",
+    "name": "Maintenance",
+    "archived": false,
+    "released": false,
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/24376",
+    "id": "24376",
+    "description": "Non go-live critical issues",
+    "name": "Relaunch 1.1",
+    "archived": false,
+    "released": false,
+    "startDate": "2014-06-30",
+    "releaseDate": "2014-08-28",
+    "overdue": false,
+    "userStartDate": "30/Jun/14",
+    "userReleaseDate": "28/Aug/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/24560",
+    "id": "24560",
+    "description": "The second version after the first bug fix release, after the initial silent beta lauch",
+    "name": "User Library 1.2",
+    "archived": false,
+    "released": false,
+    "startDate": "2014-04-07",
+    "releaseDate": "2014-05-15",
+    "overdue": false,
+    "userStartDate": "07/Apr/14",
+    "userReleaseDate": "15/May/14",
+    "projectId": 10264
+  },
+  {
+    "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/version/24773",
+    "id": "24773",
+    "description": "New update manager base, go-live is August 1",
+    "name": "Update Manager 2.0",
+    "archived": false,
+    "released": false,
+    "releaseDate": "2014-07-17",
+    "overdue": false,
+    "userReleaseDate": "17/Jul/14",
+    "projectId": 10264
+  }
+]

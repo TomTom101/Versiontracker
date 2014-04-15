@@ -158,9 +158,20 @@
         var self = {}
         self.sprintmanager = new Sprintmanager()
 
-        self.init = function(sprints, versions) {
-            self.sprints = sprints
-            self.versions = versions
+        self.init = function() {
+            jQuery.ajaxSetup({async: false});
+            
+            //self.sprints = sprints
+            self.versions = new Collection()
+            var versions = self.getVersions()
+
+            _.each(versions, function(version) {
+                self.versions.add(new Version(version.name, version.releaseDate, 100, 0))
+            })
+
+            console.log(self.versions)
+        }
+        self.solve = function(sprints) {
             // Go through each sprint, from last to first
         	sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
@@ -168,7 +179,7 @@
                     " ends " + sprint.ends.toYMD())
 
                 // We must work on everything that is not finished and finshes with or after the sprint
-                var _activeVersions = versions.select(function(version) {
+                var _activeVersions = self.versions.select(function(version) {
                     return (version.story_points > 0 && version.ends.compareTo(sprint.ends) > -1);
                 });
 
@@ -183,8 +194,8 @@
                 // running/active in the next sprint
                 sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
             });
-            var ac = self.getActiveVersions();
-            console.log(ac)
+            //var ac = self.getActiveVersions();
+            //  console.log(ac)
 
         }
 
@@ -196,11 +207,36 @@
             return set
         }
 
-        self.solve = function() {
-
-            //console.log(self.versions)
-            //console.log(self.sprintmanager._list)
+        self.getVersions = function() {
+            //var url = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
+            // archived: false
+            // released: false
+            // get id, name, releaseDate
+            // relaunch 22872
+            var url = 'http://localhost:8080/www/versions.json'
+            var versions = []
+            jQuery.getJSON(url, function(data) {
+                versions = _.where(data, { archived: false, released: false })
+            })
+            return versions
         }
+        self.getActiveSprint = function() {
+            // includeHistoricSprints=false has no effect
+            //https://www.native-instruments.com/bugtracker/rest/greenhopper/1.0/sprintquery/160/?includeHistoricSprints=false&includeFutureSprints=true
+            // sprints..state: ACTIVE
+        }
+        self.getIssuesForActiveVersions = function() {
+            // version_ids = getVersions
+            //https://www.native-instruments.com/bugtracker/rest/api/latest/search?jql=fixVersion%20in([version_ids])
+        }
+        self.getIssuesInCurrentSprint = function() {
+            // sprint_id = getActiveSprint
+            //https://www.native-instruments.com/bugtracker/rest/api/latest/search?jql=sprint=[sprint_id]
+            // estimate customfield_11121
+            // version fixVersions.id
+        }
+
+
 
         return self;
     }
