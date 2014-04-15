@@ -15,6 +15,7 @@
         },
         add: function(version) {
             this._list.push(version);
+            return version
         },
         concat: function(versionArray) {
             this._list.push.apply(this._list, versionArray);
@@ -65,13 +66,16 @@
 
     Version = new JS.Class({
         include: [JS.Comparable, JS.Enumerable],
-        initialize: function(name, ends, points) {
+        initialize: function(name, ends, points, unestimated) {
             this.name = name;
             // The computed date of when work on the version must start in order to finish in time
             this.first_sprint = undefined;
             this.last_sprint = undefined;
             this.ends = new Date(ends).clearTime();
-            this.story_points = this.inital_storypoints = points;
+            this.unestimated = unestimated
+            this.unestimated_points = unestimated * 5
+            points += this.unestimated_points
+            this.story_points = this.inital_storypoints = points
 
         },
         /* 
@@ -106,7 +110,7 @@
     	include: [JS.Comparable],
         extend: {
             velocity: 160,
-            days: 21,
+            days: 18,
             index: 0
         },
         initialize: function(name, starts) {
@@ -164,6 +168,7 @@
 
         self.init = function(sprints, versions) {
             self.sprints = sprints
+            self.versions = versions
             // Go through each sprint, from last to first
         	sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
@@ -186,11 +191,23 @@
                 // running/active in the next sprint
                 sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
             });
+            var ac = self.getActiveVersions();
+            console.log(ac)
+
+        }
+
+        self.getActiveVersions = function() {
+            set = new JS.Set()
+            self.sprintmanager.forEach(function(link) {
+                set.add(link.version)
+            })
+            return set
         }
 
         self.solve = function() {
 
-            console.log(self.sprintmanager)
+            //console.log(self.versions)
+            //console.log(self.sprintmanager._list)
         }
 
         return self;
