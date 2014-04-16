@@ -1,5 +1,5 @@
 Versiontracker
 ==============
 
-Display running versions in JIRA and suggest sprint assignments.
+Display running versions in JIRA and suggests sprint assignments.
 
