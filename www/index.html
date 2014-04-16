@@ -33,18 +33,7 @@
     }});
 
     JS.require('versiontracker', function() {
-      var sprints = new Collection()
-      var _first = new Date("2014-04-07");
 
-      // Need at least so many sprints to cover all versions
-      for (var i = 5; i < 12; i++) {
-        var start_date = _first;
-        if(sprint) {
-          start_date = new Date(sprint.ends).addDays(3)
-        }
-        var sprint = new Sprint("v2."+i+".0", start_date);
-        sprints.add(sprint);
-      }
 
       Handlebars.registerHelper("debug", function(optionalValue) {
         console.log("\nCurrent Context");
@@ -82,10 +71,10 @@
         $("#content").html('loading…');
         var vt = versiontracker()
         vt.init()
-        vt.solve(sprints);
+        vt.solve();
         var version_src = $("#version-template").html();
         var version_tpl = Handlebars.compile(version_src);
-        var table = {versions: vt.getActiveVersions(), sprints: sprints}
+        var table = {versions: vt.getActiveVersions(), sprints: vt.getActiveSprints()}
         $("#content").html(version_tpl(table));
 
       }

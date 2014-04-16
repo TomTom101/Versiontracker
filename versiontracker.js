@@ -161,19 +161,20 @@
         self.init = function() {
             jQuery.ajaxSetup({async: false});
             
-            //self.sprints = sprints
             self.versions = new Collection()
+            self.sprints = self.getSprints()
             var versions = self.getVersions()
 
             _.each(versions, function(version) {
                 self.versions.add(new Version(version.name, version.releaseDate, 100, 0))
             })
+    
 
             console.log(self.versions)
         }
-        self.solve = function(sprints) {
+        self.solve = function() {
             // Go through each sprint, from last to first
-        	sprints.reverseForEach(function(sprint) {
+        	self.sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
                     " ends " + sprint.ends.toYMD())
@@ -220,6 +221,24 @@
             })
             return versions
         }
+        self.getSprints = function() {
+            var _first = new Date("2014-04-07");
+            var sprints = new Collection()
+
+            // Need at least so many sprints to cover all versions
+            for (var i = 5; i < 12; i++) {
+                var start_date = _first;
+                if(sprint) {
+                    start_date = new Date(sprint.ends).addDays(3)
+                }
+                var sprint = new Sprint("v2."+i+".0", start_date);
+                sprints.add(sprint);
+            }
+            return sprints
+        },
+        self.getActiveSprints = function() {
+            return self.sprints
+        },
         self.getActiveSprint = function() {
             // includeHistoricSprints=false has no effect
             //https://www.native-instruments.com/bugtracker/rest/greenhopper/1.0/sprintquery/160/?includeHistoricSprints=false&includeFutureSprints=true
