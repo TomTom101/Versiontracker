@@ -5,7 +5,7 @@
   <script src="../node_modules/jsclass/src/loader-browser.js"></script>
   <script src="../node_modules/date-utils/lib/date-utils.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap.min.css">
 <link rel="stylesheet" href="versiontracker.css">
 
 <!-- Optional theme -->
@@ -123,18 +123,15 @@
 <script id="version-partial" type="text/x-handlebars-template">
   <div class="row">
     <div class="col-md-2">
-    <div>{{id}}: {{name}}</div>
-    <div><small>Due: {{simpleDate ends}}</small></div>
-    <div><small>SP: {{inital_storypoints}}</small></div>
-    <div><small>Unestimated guess: {{unestimated_points}}</small></div>
-    <div><small>Left: {{story_points}}</small></div>
-
-
+      <div>{{id}}: {{name}}</div>
+      <div><small>Due: {{simpleDate ends}}</small></div>
+      <div><small>SP: {{inital_storypoints}}</small></div>
+      <div><small>Unestimated guess: {{unestimated_points}}</small></div>
     </div>
     <div class="col-md-{{duration this}} col-md-offset-{{first_sprint.index}}">
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 100%;">
-        <span class="sr-only">100</span>
+        <div class="progress-bar{{#if isUnfinished}} progress-bar-danger{{/if}}" role="progressbar" style="width: {{getProgress}}%;">
+        <span>{{#if isUnfinished}}{{story_points}} left{{/if}}</span>
         </div>
       </div>
     </div>

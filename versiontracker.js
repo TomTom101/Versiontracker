@@ -85,6 +85,13 @@
         setUnestimatedCount: function(unestimated) {
             this.unestimated = unestimated
         },
+        isUnfinished: function() {
+            return this.story_points > 0
+        },
+        getProgress: function() {
+            console.log((this.inital_storypoints-this.story_points)/this.inital_storypoints)
+            return parseInt(((this.inital_storypoints-this.story_points)/this.inital_storypoints)*100)
+        },        
         /* 
             Returns remaining (or surplus of) story points after using them towards the version.
          */
