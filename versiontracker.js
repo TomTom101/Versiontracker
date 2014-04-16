@@ -62,17 +62,28 @@
 
     Version = new JS.Class({
         include: [JS.Comparable, JS.Enumerable],
-        initialize: function(name, ends, points, unestimated) {
+        initialize: function(id, name, ends, estimates) {
+            this.id = id;
             this.name = name;
             // The computed date of when work on the version must start in order to finish in time
+            this.ends = new Date(ends).clearTime();
             this.first_sprint = undefined;
             this.last_sprint = undefined;
-            this.ends = new Date(ends).clearTime();
-            this.unestimated = unestimated
-            this.unestimated_points = unestimated * 5
-            points += this.unestimated_points
+            points = 1
+            if(estimates) {
+                this.unestimated = estimates.unestimated
+                this.unestimated_points = estimates.unestimated * 0
+                points = estimates.estimate + this.unestimated_points 
+            }
+            //points += this.unestimated_points
             this.story_points = this.inital_storypoints = points
 
+        },
+        setStoryPoints: function(points) {
+            this.story_points = points
+        },
+        setUnestimatedCount: function(unestimated) {
+            this.unestimated = unestimated
         },
         /* 
             Returns remaining (or surplus of) story points after using them towards the version.
@@ -164,14 +175,15 @@
             self.versions = new Collection()
             self.sprints = self.getSprints()
             var versions = self.getVersions()
+            var estimates = self._getEstimatesForVersions(versions)
 
             _.each(versions, function(version) {
-                self.versions.add(new Version(version.name, version.releaseDate, 100, 0))
+                console.log("estimate for " +version.name+ ", "+ version.id+" is "  )
+                self.versions.add(new Version(version.id, version.name, version.releaseDate, estimates[version.id]))
             })
-    
-
             console.log(self.versions)
         }
+
         self.solve = function() {
             // Go through each sprint, from last to first
         	self.sprints.reverseForEach(function(sprint) {
@@ -196,30 +208,70 @@
                 sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
             });
             //var ac = self.getActiveVersions();
-            //  console.log(ac)
+            //console.log(self.sprintmanager)
 
         }
 
         self.getActiveVersions = function() {
+            //@todo should not set but get!
             set = new JS.Set()
             self.sprintmanager.forEach(function(link) {
                 set.add(link.version)
             })
             return set
         }
-
         self.getVersions = function() {
             //var url = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
             // archived: false
             // released: false
-            // get id, name, releaseDate
             // relaunch 22872
             var url = 'http://localhost:8080/www/versions.json'
             var versions = []
             jQuery.getJSON(url, function(data) {
-                versions = _.where(data, { archived: false, released: false })
+                versions = _.filter(data, function(version) {
+                    return  (
+                        version.archived == false &&
+                        version.released == false &&
+                        version.releaseDate
+                    )
+                });
             })
+
             return versions
+        }
+        // self._getEstimatesForVersions = function(versions) {
+        //     var ids = _.map(versions, function(version) {
+        //         return version.id
+        //     })
+        //     self._loadIssuesForVersions(ids)
+        // }
+        self._getEstimatesForVersions = function(versions) {
+            //var url = 'https://www.native-instruments.com/bugtracker/rest/api/latest/search'
+            //?maxResults=500&fields=customfield_11121,fixVersions&jql='
+            var ids = _.map(versions, function(version) { return version.id }).join()
+            var url = 'http://localhost:8080/www/openissues.json?fields=customfield_11121,fixVersions&jql='
+            var jql = 'project = WWW AND status not IN(Closed,Deployed)'
+                    + ' AND type in (Bug,Task,Improvement,"New Feature")'
+                    + ' AND fixVersion IN('+ ids + ')'
+            //22872,24560,24773,24376
+            url += encodeURIComponent(jql)
+            console.log(url)
+            var estimates = []
+            jQuery.getJSON(url, function(data) {
+                _.each(data.issues, function(issue) {
+                    var fixId = issue.fields.fixVersions[0].id
+                    if (!(fixId in estimates)) {
+                        estimates[fixId] = {unestimated: 0, estimate: 0}
+                    }
+                    var estimate = parseInt(issue.fields.customfield_11121) 
+                    if(!estimate) {
+                        estimates[fixId].unestimated++
+                    }
+                    estimates[fixId].estimate += estimate || 0
+                })
+            })
+            console.log(estimates)
+            return estimates
         }
         self.getSprints = function() {
             var _first = new Date("2014-04-07");

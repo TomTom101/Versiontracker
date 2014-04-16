@@ -1,0 +1,1468 @@
+{
+  "expand": "schema,names",
+  "startAt": 0,
+  "maxResults": 500,
+  "total": 73,
+  "issues": [
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "93332",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/93332",
+      "key": "WWW-2728",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "93090",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/93090",
+      "key": "WWW-2719",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92434",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92434",
+      "key": "WWW-2710",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92423",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92423",
+      "key": "WWW-2707",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92409",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92409",
+      "key": "WWW-2706",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92405",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92405",
+      "key": "WWW-2705",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92290",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92290",
+      "key": "WWW-2700",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92288",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92288",
+      "key": "WWW-2698",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92287",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92287",
+      "key": "WWW-2697",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92284",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92284",
+      "key": "WWW-2696",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92282",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92282",
+      "key": "WWW-2695",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92281",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92281",
+      "key": "WWW-2694",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 20.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "92115",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/92115",
+      "key": "WWW-2689",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22873",
+            "id": "22873",
+            "description": "Typo3 editable page allowing preview",
+            "name": "Relaunch 0.5",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-03"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91957",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91957",
+      "key": "WWW-2687",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91955",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91955",
+      "key": "WWW-2686",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91942",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91942",
+      "key": "WWW-2685",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91817",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91817",
+      "key": "WWW-2680",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91605",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91605",
+      "key": "WWW-2626",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91496",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91496",
+      "key": "WWW-2620",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91402",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91402",
+      "key": "WWW-2614",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91398",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91398",
+      "key": "WWW-2613",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91395",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91395",
+      "key": "WWW-2612",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91367",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91367",
+      "key": "WWW-2607",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91366",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91366",
+      "key": "WWW-2606",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "91190",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/91190",
+      "key": "WWW-2601",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90965",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90965",
+      "key": "WWW-2593",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90950",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90950",
+      "key": "WWW-2592",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90949",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90949",
+      "key": "WWW-2591",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90921",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90921",
+      "key": "WWW-2589",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90823",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90823",
+      "key": "WWW-2584",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90804",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90804",
+      "key": "WWW-2583",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90803",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90803",
+      "key": "WWW-2582",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90801",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90801",
+      "key": "WWW-2581",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "90642",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/90642",
+      "key": "WWW-2576",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "89791",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/89791",
+      "key": "WWW-2511",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22873",
+            "id": "22873",
+            "description": "Typo3 editable page allowing preview",
+            "name": "Relaunch 0.5",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-03"
+          }
+        ],
+        "customfield_11121": 3.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "89614",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/89614",
+      "key": "WWW-2497",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "89563",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/89563",
+      "key": "WWW-2493",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 1.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "89491",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/89491",
+      "key": "WWW-2488",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "88498",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/88498",
+      "key": "WWW-2447",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "88238",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/88238",
+      "key": "WWW-2444",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "88229",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/88229",
+      "key": "WWW-2443",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "88228",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/88228",
+      "key": "WWW-2442",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "88135",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/88135",
+      "key": "WWW-2437",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87632",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87632",
+      "key": "WWW-2368",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87630",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87630",
+      "key": "WWW-2367",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87629",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87629",
+      "key": "WWW-2366",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87622",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87622",
+      "key": "WWW-2363",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87613",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87613",
+      "key": "WWW-2357",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 40.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87220",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87220",
+      "key": "WWW-2346",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": 20.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "87162",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/87162",
+      "key": "WWW-2342",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "86912",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/86912",
+      "key": "WWW-2333",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "86911",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/86911",
+      "key": "WWW-2332",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "86651",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/86651",
+      "key": "WWW-2305",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "85953",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/85953",
+      "key": "WWW-2284",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "85890",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/85890",
+      "key": "WWW-2278",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 13.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "85498",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/85498",
+      "key": "WWW-2260",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "85383",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/85383",
+      "key": "WWW-2254",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "85106",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/85106",
+      "key": "WWW-2227",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": 3.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "84961",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/84961",
+      "key": "WWW-2222",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "84907",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/84907",
+      "key": "WWW-2215",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "84898",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/84898",
+      "key": "WWW-2213",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "84744",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/84744",
+      "key": "WWW-2202",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "84557",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/84557",
+      "key": "WWW-2185",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 3.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "83838",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/83838",
+      "key": "WWW-2154",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "80147",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/80147",
+      "key": "WWW-1998",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 8.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "79690",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/79690",
+      "key": "WWW-1983",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22578",
+            "id": "22578",
+            "description": "The version that is required for the marketing campaign",
+            "name": "User Library 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-04-24"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "73555",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/73555",
+      "key": "WWW-1811",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "72365",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/72365",
+      "key": "WWW-1746",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": 5.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "67267",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/67267",
+      "key": "WWW-1545",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "63982",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/63982",
+      "key": "WWW-1150",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "62773",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/62773",
+      "key": "WWW-1054",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "55572",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/55572",
+      "key": "WWW-811",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/22872",
+            "id": "22872",
+            "description": "Go-live critical issues for the website Relaunch",
+            "name": "Relaunch 1.0",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-06-05"
+          }
+        ],
+        "customfield_11121": 20.0
+      }
+    },
+    {
+      "expand": "editmeta,renderedFields,transitions,changelog,operations",
+      "id": "48896",
+      "self": "https://www.native-instruments.com/bugtracker/rest/api/latest/issue/48896",
+      "key": "WWW-380",
+      "fields": {
+        "fixVersions": [
+          {
+            "self": "https://www.native-instruments.com/bugtracker/rest/api/2/version/24376",
+            "id": "24376",
+            "description": "Non go-live critical issues",
+            "name": "Relaunch 1.1",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2014-08-28"
+          }
+        ],
+        "customfield_11121": null
+      }
+    }
+  ]
+}
