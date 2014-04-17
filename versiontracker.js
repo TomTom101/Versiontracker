@@ -252,18 +252,20 @@
         //     self._loadIssuesForVersions(ids)
         // }
         self._getEstimatesForVersions = function(versions) {
-            //var url = 'https://www.native-instruments.com/bugtracker/rest/api/latest/search'
-            //?maxResults=500&fields=customfield_11121,fixVersions&jql='
+            var local = 'http://localhost:8080/www/openissues.json'
+            var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/search'
+            var proxy = 'http://localhost:8081/?url='
+
             var ids = _.map(versions, function(version) { return version.id }).join()
-            var url = 'http://localhost:8080/www/openissues.json?fields=customfield_11121,fixVersions&jql='
             var jql = 'project = WWW AND status not IN(Closed,Deployed)'
                     + ' AND type in (Bug,Task,Improvement,"New Feature")'
                     + ' AND fixVersion IN('+ ids + ')'
-            //22872,24560,24773,24376
-            url += encodeURIComponent(jql)
-            console.log(url)
+            var query = '?maxResults=500&fields=customfield_11121,fixVersions&jql=' + encodeURIComponent(jql)
+            var url = proxy + encodeURIComponent(jira + query)
+
             var estimates = []
             jQuery.getJSON(url, function(data) {
+                console.log(data)
                 _.each(data.issues, function(issue) {
                     var fixId = issue.fields.fixVersions[0].id
                     if (!(fixId in estimates)) {
