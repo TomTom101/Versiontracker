@@ -50,13 +50,13 @@
       Handlebars.registerPartial("version", $("#version-partial").html());
       Handlebars.registerPartial("sprint", $("#sprint-partial").html());
       Handlebars.registerHelper('simpleDate', function(date) {
-        return date.toFormat('MMM D')
+        return date ? date.toFormat('MMM D') : 'NOO'
       });
       Handlebars.registerHelper('getWeekNumber', function(date) {
         return date.getWeekNumber()
       });
       Handlebars.registerHelper('duration', function(date) {
-        return this.last_sprint.index - this.first_sprint.index + 1
+        return this.sprints.length
       });
       Handlebars.registerHelper('forEach', function(context, options) {
         var ret = "";
@@ -101,7 +101,6 @@
     </div>
   </div>
 </div>
-<!--
 <div class="container">
 <ul class="list-group">
 {{#forEach versions}}
@@ -110,14 +109,12 @@
     <span class="badge">{{this.getCurrentStoryPoints}}</span>
     <h5>{{name}}</h5>
     {{simpleDate ends}}<br>
-    First Sprint {{first_sprint.name}} starting {{simpleDate first_sprint.starts}} #{{first_sprint.index}}<br>
-    Last Sprint {{last_sprint.name}} ending {{simpleDate last_sprint.ends}} #{{last_sprint.index}} {{duration this}}
+    First Sprint {{sprints.0.name}} starting {{simpleDate sprints.0.starts}} {{duration this}}
     </li>
 {{/forEach}}
 </ul>
 
 </div>
-//-->
 <button type="button" class="btn btn-default" id="run">Do it</button>
 </script>
 <script id="version-partial" type="text/x-handlebars-template">
@@ -128,11 +125,15 @@
       <div><small>SP: {{inital_storypoints}}</small></div>
       <div><small>Unestimated guess: {{unestimated_points}}</small></div>
     </div>
-    <div class="col-md-{{duration this}} col-md-offset-{{first_sprint.index}}">
+    <div class="col-md-{{duration this}} col-md-offset-{{sprints.0.index}}">
       <div class="progress">
-        <div class="progress-bar{{#if isUnfinished}} progress-bar-danger{{/if}}" role="progressbar" style="width: {{getProgress}}%;">
-        <span>{{#if isUnfinished}}{{story_points}} left{{/if}}</span>
+        <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{getPctDone}}%;">
         </div>
+        {{#if isUnfinished}}
+        <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{getPctMissing}}%;">
+        <span>{{story_points}} left</span>
+        </div>
+        {{/if}}
       </div>
     </div>
   </div>
@@ -140,7 +141,7 @@
 <script id="sprint-partial" type="text/x-handlebars-template">
 
     <div class="col-md-1">
-    {{name}} CW {{getWeekNumber ends}}
+    {{name}}<div>CW {{getWeekNumber ends}}</div>
     </div>
 </script>
 

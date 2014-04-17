@@ -67,12 +67,11 @@
             this.name = name;
             // The computed date of when work on the version must start in order to finish in time
             this.ends = new Date(ends).clearTime();
-            this.first_sprint = undefined;
-            this.last_sprint = undefined;
+            this.sprints = [];
             points = 1
             if(estimates) {
-                this.unestimated = estimates.unestimated
-                this.unestimated_points = estimates.unestimated * 0
+                this.unestimated = estimates.unestimated || 0
+                this.unestimated_points = estimates.unestimated * 8
                 points = estimates.estimate + this.unestimated_points 
             }
             //points += this.unestimated_points
@@ -88,10 +87,12 @@
         isUnfinished: function() {
             return this.story_points > 0
         },
-        getProgress: function() {
-            console.log((this.inital_storypoints-this.story_points)/this.inital_storypoints)
+        getPctDone: function() {
             return parseInt(((this.inital_storypoints-this.story_points)/this.inital_storypoints)*100)
-        },        
+        },   
+        getPctMissing: function() {
+            return 100-this.getPctDone()
+        },      
         /* 
             Returns remaining (or surplus of) story points after using them towards the version.
          */
@@ -138,17 +139,15 @@
                 this.versions.add(version);
             }
         },
-        substractAvailableStoryPoints: function(vt, activeVersions) {
+        substractAvailableStoryPoints: function(self) {
+            activeVersions = self.sprintmanager.getVersionsForSprint(this)
             var subtract = Sprint.velocity / activeVersions.length;
             console.log("subtract " + subtract.toFixed(0) + ", #versions: " + activeVersions.length)
             var remainingStoryPoints, remainder = 0;
             // if retrieved sorted by SPs asc, we could
             var versionsByPointsAsc = activeVersions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
-            	if(version.last_sprint == undefined) {
-                	version.last_sprint = this;
-            	}
-                version.first_sprint = this;
+                version.sprints.unshift(this);
                 // remainder is added in the previous loop
                 var usedOnVersion = subtract + remainder
                 remainingStoryPoints = version.substractStoryPoints(usedOnVersion);
@@ -159,7 +158,7 @@
                     remainder = 0
                 }
                 // Sets the number of stroy points used towards a version in a sprint
-                vt.sprintmanager.setForVersionInSprint(this, version,
+                self.sprintmanager.setForVersionInSprint(this, version,
                     {
                         story_points: (usedOnVersion - remainder),
                         remaining: Math.max(0, remainingStoryPoints)
@@ -212,7 +211,7 @@
                 // deduct storypoints from each version in a sprint
                 // the version will be updated with the remaining story points and may on may not be 
                 // running/active in the next sprint
-                sprint.substractAvailableStoryPoints(self, self.sprintmanager.getVersionsForSprint(sprint))
+                sprint.substractAvailableStoryPoints(self)
             });
             //var ac = self.getActiveVersions();
             //console.log(self.sprintmanager)
@@ -285,7 +284,7 @@
             var sprints = new Collection()
 
             // Need at least so many sprints to cover all versions
-            for (var i = 5; i < 12; i++) {
+            for (var i = 5; i <= 12; i++) {
                 var start_date = _first;
                 if(sprint) {
                     start_date = new Date(sprint.ends).addDays(3)
