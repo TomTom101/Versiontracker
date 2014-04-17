@@ -178,16 +178,15 @@
         self.init = function() {
             jQuery.ajaxSetup({async: false});
             
-            self.versions = new Collection()
             self.sprints = self.getSprints()
             var versions = self.getVersions()
             var estimates = self._getEstimatesForVersions(versions)
 
+            self.versions = new Collection()
             _.each(versions, function(version) {
                 console.log("estimate for " +version.name+ ", "+ version.id+" is "  )
                 self.versions.add(new Version(version.id, version.name, version.releaseDate, estimates[version.id]))
             })
-            console.log(self.versions)
         }
 
         self.solve = function() {
@@ -224,10 +223,11 @@
             self.sprintmanager.forEach(function(link) {
                 set.add(link.version)
             })
-            return set
+            // Sorted by release date early to late
+            return set.sort(function(a,b) { return (a.ends - b.ends)  })
         }
         self.getVersions = function() {
-            //var url = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
+            //var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
             // archived: false
             // released: false
             // relaunch 22872
@@ -245,12 +245,7 @@
 
             return versions
         }
-        // self._getEstimatesForVersions = function(versions) {
-        //     var ids = _.map(versions, function(version) {
-        //         return version.id
-        //     })
-        //     self._loadIssuesForVersions(ids)
-        // }
+
         self._getEstimatesForVersions = function(versions) {
             var local = 'http://localhost:8080/www/openissues.json'
             var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/search'
@@ -277,8 +272,9 @@
                     }
                     estimates[fixId].estimate += estimate || 0
                 })
+            }).error(function(XHR, txt, message) {
+                alert("Could not retrieve estimates: " + message)
             })
-            console.log(estimates)
             return estimates
         }
         self.getSprints = function() {

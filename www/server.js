@@ -16,11 +16,10 @@ proxyRequest = function(url, r) {
 	sys.puts("Calling "  + url);   
 		var request = require("request")
 		var resp = ""
-		sys.puts(auth_config.user)
 		request(url, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 
-				resp = cache.put(url, body, 60000)
+				resp = cache.put(url, body, 15*60*1000)
 			} else {
 				resp = response.statusCode
 			}
