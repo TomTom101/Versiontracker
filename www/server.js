@@ -1,7 +1,8 @@
 var sys = require("sys"),  
  http = require("http"),
  url = require("url"),
- cache = require('memory-cache');
+ cache = require('memory-cache'),
+ auth_config = require('./auth.js');
 
 proxyRequest = function(url, r) {
 	if(resp = cache.get(url)) {
@@ -15,6 +16,7 @@ proxyRequest = function(url, r) {
 	sys.puts("Calling "  + url);   
 		var request = require("request")
 		var resp = ""
+		sys.puts(auth_config.user)
 		request(url, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 
@@ -25,7 +27,7 @@ proxyRequest = function(url, r) {
 			r.setHeader("Access-Control-Allow-Origin", "*")
 			r.write(cache.get(url))
 			r.end(); 
-		}).auth('*', '*', true);
+		}).auth(auth_config.user, auth_config.pass, auth_config.sendImmediately);
 }
 http.createServer(function(request,response){  
 	var url_parts = url.parse(request.url, true);
