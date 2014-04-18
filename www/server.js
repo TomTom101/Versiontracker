@@ -2,40 +2,33 @@
 
 var sys = require("sys"),
  http = require("http"),
+ request = require("request"),
  url = require("url"),
  cache = require('memory-cache'),
  auth_config = require('./auth.js'),
  static = require('node-static');
 
-proxyRequest = function(url, r) {
-	if(resp = cache.get(url)) {
-		sys.puts("From cache");
-		r.setHeader("Access-Control-Allow-Origin", "*");
-		r.write(resp)
-		r.end();
-		return
-	}
-
-	sys.puts("Calling "  + url);
-		var request = require("request")
-		var resp = ""
-		request(url, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-
-				resp = cache.put(url, body, 15*60*1000)
-			} else {
-				resp = response.statusCode
-			}
-			r.setHeader("Access-Control-Allow-Origin", "*")
-			r.write(cache.get(url))
-			r.end();
-		}).auth(auth_config.user, auth_config.pass, auth_config.sendImmediately);
-}
-http.createServer(function(request,response){
-	var url_parts = url.parse(request.url, true);
-    //response.writeHeader(200, {"Content-Type": "text/json"});
-    if(url_parts.query.url) {
-    	proxyRequest(url_parts.query.url, response)
+http.createServer(function(http_request,response){
+	var url_parts = url.parse(http_request.url, true);
+   	response.setHeader("Access-Control-Allow-Origin", "*");
+    request_url = url_parts.query.url
+    if(request_url) {
+    	if(resp = cache.get(request_url)) {
+    		sys.puts("From cache");
+    	} else {
+    		resp = ""
+    		sys.puts("Calling " + request_url);
+	    	request(request_url, function (jiraerror, jiraresponse, body) {
+				if (!jiraerror && jiraresponse.statusCode == 200) {
+					cache.put(request_url, body, 15*60*1000)
+					resp = body
+				} else {
+					resp = jiraerror
+				}
+			})	.auth(auth_config.user, auth_config.pass, auth_config.sendImmediately)
+    	}
+		response.write(resp)
+		response.end();
     }
 
 }).listen(8081);
@@ -49,8 +42,6 @@ http.createServer(function (request, response) {
         file.serve(request, response, function(err, result) {
         	if (err) { // There was an error serving the file
                 sys.error("Error serving " + request.url + " - " + err.message);
-
-                // Respond to the client
                 response.writeHead(err.status, err.headers);
                 response.end();
             }
