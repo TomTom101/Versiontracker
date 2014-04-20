@@ -15,6 +15,8 @@ http.createServer(function(http_request,response){
     if(request_url) {
     	if(resp = cache.get(request_url)) {
     		sys.puts("From cache");
+    		response.write(resp)
+    		response.end()
     	} else {
     		resp = ""
     		sys.puts("Calling " + request_url);
@@ -26,9 +28,8 @@ http.createServer(function(http_request,response){
 					resp = jiraerror
 				}
 			})	.auth(auth_config.user, auth_config.pass, auth_config.sendImmediately)
+				.pipe(response)
     	}
-		response.write(resp)
-		response.end();
     }
 
 }).listen(8081);
