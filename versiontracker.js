@@ -61,10 +61,14 @@
     });
 
     Version = new JS.Class({
-        include: [JS.Comparable, JS.Enumerable],
+        include: [JS.Comparable],
+        extend: {
+            priority: 1
+        },
         initialize: function(id, name, ends, estimates) {
             this.id = id;
             this.name = name;
+            this.priority = Version.priority++
             // The computed date of when work on the version must start in order to finish in time
             this.ends = new Date(ends).clearTime();
             this.sprints = [];
@@ -72,11 +76,10 @@
             if(estimates) {
                 this.unestimated = estimates.unestimated || 0
                 this.unestimated_points = estimates.unestimated * 8
-                points = estimates.estimate + this.unestimated_points 
+                points = estimates.estimate + this.unestimated_points
             }
             //points += this.unestimated_points
             this.story_points = this.inital_storypoints = points
-
         },
         setStoryPoints: function(points) {
             this.story_points = points
@@ -89,11 +92,14 @@
         },
         getPctDone: function() {
             return parseInt(((this.inital_storypoints-this.story_points)/this.inital_storypoints)*100)
-        },   
+        },
         getPctMissing: function() {
             return 100-this.getPctDone()
-        },      
-        /* 
+        },
+        equals: function(object) {
+            return (object instanceof this.klass) && object.id == this.id;
+        },
+        /*
             Returns remaining (or surplus of) story points after using them towards the version.
          */
         substractStoryPoints: function(points) {
@@ -105,8 +111,8 @@
             return this.story_points;
         },
         compareTo: function(other) {
-            if (this.story_points < other.story_points) return -1;
-            if (this.story_points > other.story_points) return 1;
+            if (this.priority < other.priority) return -1;
+            if (this.priority > other.priority) return 1;
             return 0;
         },
         getInitialStoryPoints: function() {
@@ -138,6 +144,11 @@
             } else {
                 this.versions.add(version);
             }
+        },
+        compareTo: function(other) {
+            if (this.ends < other.ends) return 1;
+            if (this.ends > other.ends) return -1;
+            return 0;
         },
         substractAvailableStoryPoints: function(self) {
             activeVersions = self.sprintmanager.getVersionsForSprint(this)
@@ -177,16 +188,17 @@
 
         self.init = function() {
             jQuery.ajaxSetup({async: false});
-            
+
             self.sprints = self.getSprints()
-            var versions = self.getVersions()
+            var versions = self.getVersionsArray()
             var estimates = self._getEstimatesForVersions(versions)
 
-            self.versions = new Collection()
+            self.versions = new JS.SortedSet()
             _.each(versions, function(version) {
-                console.log("estimate for " +version.name+ ", "+ version.id+" is "  )
+                //console.log("estimate for " +version.name+ ", "+ version.id+" is " +estimates[version.id].estimate  )
                 self.versions.add(new Version(version.id, version.name, version.releaseDate, estimates[version.id]))
             })
+            console.log(self.versions)
         }
 
         self.solve = function() {
@@ -208,7 +220,7 @@
                     self.sprintmanager.add({version: version, sprint: sprint})
                 })
                 // deduct storypoints from each version in a sprint
-                // the version will be updated with the remaining story points and may on may not be 
+                // the version will be updated with the remaining story points and may on may not be
                 // running/active in the next sprint
                 sprint.substractAvailableStoryPoints(self)
             });
@@ -226,7 +238,7 @@
             // Sorted by release date early to late
             return set.sort(function(a,b) { return (a.ends - b.ends)  })
         }
-        self.getVersions = function() {
+        self.getVersionsArray = function() {
             //var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
             // archived: false
             // released: false
@@ -260,13 +272,12 @@
 
             var estimates = []
             jQuery.getJSON(url, function(data) {
-                console.log(data)
                 _.each(data.issues, function(issue) {
                     var fixId = issue.fields.fixVersions[0].id
                     if (!(fixId in estimates)) {
                         estimates[fixId] = {unestimated: 0, estimate: 0}
                     }
-                    var estimate = parseInt(issue.fields.customfield_11121) 
+                    var estimate = parseInt(issue.fields.customfield_11121)
                     if(!estimate) {
                         estimates[fixId].unestimated++
                     }
