@@ -153,7 +153,7 @@
         substractAvailableStoryPoints: function(self) {
             activeVersions = self.sprintmanager.getVersionsForSprint(this)
             var subtract = Sprint.velocity / activeVersions.length;
-            console.log("subtract " + subtract.toFixed(0) + ", #versions: " + activeVersions.length)
+            console.log("subtract " + subtract.toFixed(0) + " #versions: " + activeVersions.length)
             var remainingStoryPoints, remainder = 0;
             // if retrieved sorted by SPs asc, we could
             var versionsByPointsAsc = activeVersions.sort(Version.compare);
@@ -196,7 +196,15 @@
             self.versions = new JS.SortedSet()
             _.each(versions, function(version) {
                 //console.log("estimate for " +version.name+ ", "+ version.id+" is " +estimates[version.id].estimate  )
-                self.versions.add(new Version(version.id, version.name, version.releaseDate, estimates[version.id]))
+                var VersionObj = new Version(version.id, version.name, version.releaseDate, estimates[version.id])
+                // Link the last sprint the version must be finished after
+                // in order to release in time. Must do this after object generation
+                // because we need the computed "ends" date
+                VersionObj.last_sprint = self.sprints.select(function(sprint) {
+                	return sprint.ends < VersionObj.ends
+                }).reverse()[0]
+
+                self.versions.add(VersionObj)
             })
             console.log(self.versions)
         }
