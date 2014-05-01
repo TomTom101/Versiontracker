@@ -18,6 +18,8 @@
 
 
     JS.packages(function() { with(this) {
+      var vt
+
       file('../versiontracker.js')
         .provides('versiontracker', 'Collection', 'Version', 'Sprint')
         .requires('JS.Class', 'JS.Enumerable', 'JS.Comparable', 'JS.Set', '_', 'Handlebars', 'jQuery');
@@ -58,6 +60,9 @@
       Handlebars.registerHelper('duration', function(date) {
         return this.sprints.length
       });
+      Handlebars.registerHelper('integer', function(number) {
+        return parseInt(number);
+      });
       Handlebars.registerHelper('forEach', function(context, options) {
         var ret = "";
         context.forEach(function(obj) {
@@ -68,18 +73,33 @@
       });
 
       function init(e) {
-        $("#content").html('loading…');
-        var vt = versiontracker()
+        vt = versiontracker()
         vt.init()
         vt.solve();
+        render(vt)
+
+      }
+      function postponeVersion(e) {
+          var id = $(e.target).data('version-id')
+          var version = vt.getVersionById(id)
+          console.log(version.ends)
+          version.postpone()
+          vt.assignAvailableSprints(version)
+          vt.rebuild()
+          vt.solve()
+          render(vt)
+
+      }
+      function render(vt) {
         var version_src = $("#version-template").html();
         var version_tpl = Handlebars.compile(version_src);
         var table = {versions: vt.getActiveVersions(), sprints: vt.getActiveSprints()}
         $("#content").html(version_tpl(table));
+        $( ".postpone-version" ).click(postponeVersion);
 
       }
       $( document ).ready(function() {
-        $( "#run" ).click(init);
+        $( "#reset" ).click(init);
         init();
       });
     });
@@ -115,7 +135,6 @@
 </ul>
 
 </div>
-<button type="button" class="btn btn-default" id="run">Do it</button>
 </script>
 <script id="version-partial" type="text/x-handlebars-template">
   <div class="row">
@@ -124,6 +143,7 @@
       <div><small>Due: {{simpleDate ends}}</small></div>
       <div><small>SP: {{inital_storypoints}}</small></div>
       <div><small>Unestimated guess: {{unestimated_points}}</small></div>
+      <div><button class="postpone-version" data-version-id="{{id}}">postpone</button></div>
     </div>
     <div class="col-md-{{duration this}} col-md-offset-{{sprints.0.index}}">
       <div class="progress">
@@ -131,7 +151,7 @@
         </div>
         {{#if isUnfinished}}
         <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{getPctMissing}}%;">
-        <span>{{story_points}} left</span>
+        <span>{{integer storypoints}} left</span>
         </div>
         {{/if}}
       </div>
@@ -145,9 +165,23 @@
     </div>
 </script>
 
+<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Versiontracker</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><button type="button" class="btn navbar-btn" id="reset">Reset</button></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="container" id="content"></div>
-
-
 
 </body>
 </html>

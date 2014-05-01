@@ -72,26 +72,32 @@
             // The computed date of when work on the version must start in order to finish in time
             this.ends = new Date(ends).clearTime();
             this.sprints = [];
-            points = 1
+            points = 100
             if(estimates) {
                 this.unestimated = estimates.unestimated || 0
                 this.unestimated_points = estimates.unestimated * 8
                 points = estimates.estimate + this.unestimated_points
             }
             //points += this.unestimated_points
-            this.story_points = this.inital_storypoints = points
+            this.storypoints = this.inital_storypoints = points
         },
         setStoryPoints: function(points) {
-            this.story_points = points
+            this.storypoints = points
+            return this
         },
         setUnestimatedCount: function(unestimated) {
             this.unestimated = unestimated
+            return this
         },
         isUnfinished: function() {
-            return this.story_points > 0
+            return this.storypoints > 0
+        },
+        postpone: function() {
+        	this.ends.addWeeks(3)
+        	return this
         },
         getPctDone: function() {
-            return parseInt(((this.inital_storypoints-this.story_points)/this.inital_storypoints)*100)
+            return Math.min(parseInt(((this.inital_storypoints-this.storypoints)/this.inital_storypoints)*100), 100)
         },
         getPctMissing: function() {
             return 100-this.getPctDone()
@@ -103,12 +109,12 @@
             Returns remaining (or surplus of) story points after using them towards the version.
          */
         substractStoryPoints: function(points) {
-            this.story_points -= points;
-            console.log("subtracted " + points.toFixed(0) + " from " + this.name + ", " + (this.story_points.toFixed(0)) + " left.")
-            if (this.story_points < 0) {
-                console.log("Saved " + this.story_points.toFixed(0) + " in " + this.name)
+            this.storypoints -= points;
+            console.log("subtracted " + points.toFixed(0) + " from " + this.name + ", " + (this.storypoints.toFixed(0)) + " left.")
+            if (this.storypoints < 0) {
+                console.log("Saved " + this.storypoints.toFixed(0) + " in " + this.name)
             }
-            return this.story_points;
+            return this.storypoints;
         },
         compareTo: function(other) {
             if (this.priority < other.priority) return -1;
@@ -119,7 +125,7 @@
         	return this.inital_storypoints.toFixed(0)
         },
         getCurrentStoryPoints: function() {
-        	return Math.max(0, this.story_points.toFixed(0))
+        	return Math.max(0, this.storypoints.toFixed(0))
         }
     });
 
@@ -131,7 +137,6 @@
             index: 0
         },
         initialize: function(name, starts) {
-            //this.versions = new Collection();
             this.index = Sprint.index++;
             this.name = name;
             this.starts = new Date(starts).clearTime();
@@ -171,7 +176,7 @@
                 // Sets the number of stroy points used towards a version in a sprint
                 self.sprintmanager.setForVersionInSprint(this, version,
                     {
-                        story_points: (usedOnVersion - remainder),
+                        storypoints: (usedOnVersion - remainder),
                         remaining: Math.max(0, remainingStoryPoints)
                     })
             }, this);
@@ -197,20 +202,36 @@
             _.each(versions, function(version) {
                 //console.log("estimate for " +version.name+ ", "+ version.id+" is " +estimates[version.id].estimate  )
                 var VersionObj = new Version(version.id, version.name, version.releaseDate, estimates[version.id])
-                // Link the last sprint the version must be finished after
-                // in order to release in time. Must do this after object generation
-                // because we need the computed "ends" date
-                VersionObj.last_sprint = self.sprints.select(function(sprint) {
-                	return sprint.ends < VersionObj.ends
-                }).reverse()[0]
-
+                self.assignAvailableSprints(VersionObj)
                 self.versions.add(VersionObj)
             })
-            console.log(self.versions)
+            //console.log(self.versions)
         }
+	    // Link the all available sprints to the version before release.
+	    // Must do this after object generation because we need the computed "ends" date
+        self.assignAvailableSprints = function(version) {
+        	version.available_sprints = self.sprints.select(function(sprint) {
+            	return sprint.ends < version.ends
+            })
+            return version
+        }
+
+        self.getVersionById = function(id) {
+        	return self.versions.select(function(version) {
+        		return version.id == id
+        	})[0]
+        }
+        self.rebuild = function() {
+        	self.versions.forEach(function(version) {
+        		version.storypoints = version.inital_storypoints
+        		version.sprints = []
+        	})
+        }
+
 
         self.solve = function() {
             // Go through each sprint, from last to first
+            self.sprintmanager = new Sprintmanager()
         	self.sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
@@ -218,7 +239,7 @@
 
                 // We must work on everything that is not finished and finshes with or after the sprint
                 var _activeVersions = self.versions.select(function(version) {
-                    return (version.story_points > 0 && version.ends.compareTo(sprint.ends) > -1);
+                    return (version.storypoints > 0 && version.ends.compareTo(sprint.ends) > -1);
                 });
 
                 // Quite clumsy to turn this array into a collection just to be able to do a forEach
@@ -233,7 +254,7 @@
                 sprint.substractAvailableStoryPoints(self)
             });
             //var ac = self.getActiveVersions();
-            //console.log(self.sprintmanager)
+            console.log(self.versions)
 
         }
 
@@ -244,7 +265,7 @@
                 set.add(link.version)
             })
             // Sorted by release date early to late
-            return set.sort(function(a,b) { return (a.ends - b.ends)  })
+            return set.sort(function(a,b) { return (a.priority - b.priority)  })
         }
         self.getVersionsArray = function() {
             //var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
@@ -299,6 +320,7 @@
         self.getSprints = function() {
             var _first = new Date("2014-04-07");
             var sprints = new Collection()
+            Sprint.index = 0
 
             // Need at least so many sprints to cover all versions
             for (var i = 5; i <= 12; i++) {
