@@ -117,8 +117,8 @@
             return this.storypoints;
         },
         compareTo: function(other) {
-            if (this.priority < other.priority) return -1;
-            if (this.priority > other.priority) return 1;
+            if (this.id < other.id) return -1;
+            if (this.id > other.id) return 1;
             return 0;
         },
         getInitialStoryPoints: function() {
@@ -181,6 +181,7 @@
                     })
             }, this);
             if (remainder > 0) {
+                this.remainder = remainder
                 // No more versions we could use the remainder for?
                 console.log("We have " + remainder + " points left in this sprint!")
             }
@@ -266,7 +267,7 @@
                 set.add(link.version)
             })
             // Sorted by release date early to late
-            return set.sort(function(a,b) { return (a.priority - b.priority)  })
+            return set.sort(function(a,b) { return (a.id - b.id)  })
         }
         self.getVersionsArray = function() {
             var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
