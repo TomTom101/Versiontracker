@@ -190,6 +190,7 @@
     versiontracker = root.versiontracker = function() {
         var self = {}
         self.sprintmanager = new Sprintmanager()
+        self.proxy = 'http://localhost:8080/?url='
 
         self.init = function() {
             jQuery.ajaxSetup({async: false});
@@ -268,12 +269,10 @@
             return set.sort(function(a,b) { return (a.priority - b.priority)  })
         }
         self.getVersionsArray = function() {
-            //var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
-            // archived: false
-            // released: false
-            // relaunch 22872
-            var url = 'http://localhost:8080/www/versions.json'
+            var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/project/WWW/versions'
+            var url = self.proxy + encodeURIComponent(jira)
             var versions = []
+
             jQuery.getJSON(url, function(data) {
                 versions = _.filter(data, function(version) {
                     return  (
@@ -288,16 +287,14 @@
         }
 
         self._getEstimatesForVersions = function(versions) {
-            var local = 'http://localhost:8080/www/openissues.json'
             var jira = 'https://www.native-instruments.com/bugtracker/rest/api/latest/search'
-            var proxy = 'http://localhost:8081/?url='
 
             var ids = _.map(versions, function(version) { return version.id }).join()
             var jql = 'project = WWW AND status not IN(Closed,Deployed)'
                     + ' AND type in (Bug,Task,Improvement,"New Feature")'
                     + ' AND fixVersion IN('+ ids + ')'
             var query = '?maxResults=500&fields=customfield_11121,fixVersions&jql=' + encodeURIComponent(jql)
-            var url = proxy + encodeURIComponent(jira + query)
+            var url = self.proxy + encodeURIComponent(jira + query)
 
             var estimates = []
             jQuery.getJSON(url, function(data) {
@@ -318,12 +315,12 @@
             return estimates
         }
         self.getSprints = function() {
-            var _first = new Date("2014-04-07");
+            var _first = new Date("2014-04-28");
             var sprints = new Collection()
             Sprint.index = 0
 
             // Need at least so many sprints to cover all versions
-            for (var i = 5; i <= 12; i++) {
+            for (var i = 6; i <= 12; i++) {
                 var start_date = _first;
                 if(sprint) {
                     start_date = new Date(sprint.ends).addDays(3)

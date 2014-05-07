@@ -6,7 +6,8 @@ var sys = require("sys"),
  url = require("url"),
  cache = require('memory-cache'),
  auth_config = require('./auth.js'),
- static = require('node-static');
+ static = require('node-static'),
+ file = new static.Server('.');
 
 http.createServer(function(http_request,response){
 	var url_parts = url.parse(http_request.url, true);
@@ -30,23 +31,18 @@ http.createServer(function(http_request,response){
 			})	.auth(auth_config.user, auth_config.pass, auth_config.sendImmediately)
 				.pipe(response)
     	}
+    } else {
+		http_request.addListener('end', function () {
+	        file.serve(http_request, response, function(err, result) {
+	        	if (err) { // There was an error serving the file
+	                sys.error("Error serving " + http_request.url + " - " + err.message);
+	                response.writeHead(err.status, err.headers);
+	                response.end();
+	            }
+	        });
+	    }).resume();    	
     }
 
-}).listen(8081);
-
-sys.puts("Proxy running on 8081");
-
-var file = new static.Server('.');
-
-http.createServer(function (request, response) {
-    request.addListener('end', function () {
-        file.serve(request, response, function(err, result) {
-        	if (err) { // There was an error serving the file
-                sys.error("Error serving " + request.url + " - " + err.message);
-                response.writeHead(err.status, err.headers);
-                response.end();
-            }
-        });
-    }).resume();
 }).listen(8080);
+
 sys.puts("Server running on 8080");
