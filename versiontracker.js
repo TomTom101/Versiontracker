@@ -132,7 +132,7 @@
     Sprint = new JS.Class({
     	include: [JS.Comparable],
         extend: {
-            velocity: 160,
+            velocity: 140,
             days: 18,
             index: 0
         },
@@ -180,11 +180,9 @@
                         remaining: Math.max(0, remainingStoryPoints)
                     })
             }, this);
-            if (remainder > 0) {
-                this.remainder = remainder
+            this.remainder = remainder || undefined
                 // No more versions we could use the remainder for?
-                console.log("We have " + remainder + " points left in this sprint!")
-            }
+            console.log("We have " + remainder + " points left in this sprint!")
         }
     });
 
