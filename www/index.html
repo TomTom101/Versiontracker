@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
 
@@ -144,7 +143,6 @@
       <div><small>Due: {{simpleDate ends}}</small></div>
       <div><small>SP: {{inital_storypoints}}</small></div>
       <div><small>Unestimated guess: {{unestimated_points}}</small></div>
-      <div><button class="postpone-version" data-version-id="{{id}}">postpone</button></div>
     </div>
     <div class="col-md-{{duration this}} col-md-offset-{{sprints.0.index}}">
       <div class="progress">
@@ -156,7 +154,9 @@
         </div>
         {{/if}}
       </div>
+    <button class="postpone-version btn btn-default btn-xs" data-version-id="{{id}}">+</button>
     </div>
+
   </div>
 </script>
 <script id="sprint-partial" type="text/x-handlebars-template">
@@ -166,7 +166,6 @@
     </div>
 </script>
 
-<nav class="navbar navbar-default" role="navigation">
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->

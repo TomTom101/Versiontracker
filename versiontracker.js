@@ -117,8 +117,8 @@
             return this.storypoints;
         },
         compareTo: function(other) {
-            if (this.id < other.id) return -1;
-            if (this.id > other.id) return 1;
+            if (this.storypoints < other.storypoints) return -1;
+            if (this.storypoints > other.storypoints) return 1;
             return 0;
         },
         getInitialStoryPoints: function() {
@@ -160,7 +160,7 @@
             var subtract = Sprint.velocity / activeVersions.length;
             console.log("subtract " + subtract.toFixed(0) + " #versions: " + activeVersions.length)
             var remainingStoryPoints, remainder = 0;
-            // if retrieved sorted by SPs asc, we could
+            // starting w/ the versions with the least SPs. This way we can apply possible remainders directly to the next "heavier" version
             var versionsByPointsAsc = activeVersions.sort(Version.compare);
             versionsByPointsAsc.forEach(function(version) {
                 version.sprints.unshift(this);
@@ -181,8 +181,9 @@
                     })
             }, this);
             this.remainder = remainder || undefined
-                // No more versions we could use the remainder for?
+
             console.log("We have " + remainder + " points left in this sprint!")
+
         }
     });
 
@@ -314,18 +315,33 @@
             return estimates
         }
         self.getSprints = function() {
-            var _first = new Date("2014-04-28");
+            var _reference_sprint_start = new Date("2014-05-19")
+            var _reference_sprint_number = 7
             var sprints = new Collection()
+            var today = new Date().clearTime()
+            console.log(sprints.length())
             Sprint.index = 0
 
             // Need at least so many sprints to cover all versions
-            for (var i = 6; i <= 12; i++) {
-                var start_date = _first;
+            for (var i = _reference_sprint_number; i <= _reference_sprint_number + 11; i++) {
+                var start_date = _reference_sprint_start;
                 if(sprint) {
+                    // new start date is 3 days after the last sprint ended (using Friday as end date here)
                     start_date = new Date(sprint.ends).addDays(3)
                 }
                 var sprint = new Sprint("v2."+i+".0", start_date);
-                sprints.add(sprint);
+
+                // Only add future sprints
+                if(sprint.starts >= today) {
+                    sprints.add(sprint);
+                } else {
+                    // If this sprint is not in the future, unset it and try 3 weeks later
+                    // We don't care about currently running sprints since we could not apply the full velocity.
+                    sprint = undefined
+                    start_date = start_date.addWeeks(3)
+                    // The index defines the offset in the view and is increased w/ every instantiation. Not very elegant to reset is manually.
+                    Sprint.index = 0
+                }
             }
             return sprints
         },
