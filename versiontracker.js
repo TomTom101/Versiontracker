@@ -304,7 +304,7 @@
                         estimates[fixId] = {unestimated: 0, estimate: 0}
                     }
                     var estimate = parseInt(issue.fields.customfield_11121)
-                    if(!estimate) {
+                    if(isNaN(estimate)) {
                         estimates[fixId].unestimated++
                     }
                     estimates[fixId].estimate += estimate || 0
