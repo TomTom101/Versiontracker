@@ -208,6 +208,12 @@
             })
             //console.log(self.versions)
         }
+
+        self.getConfig = function() {
+            return {    velocity: Sprint.velocity,
+                        date: new Date().toFormat('DDDD, D. MMMM')
+                    }
+        }
 	    // Link the all available sprints to the version before release.
 	    // Must do this after object generation because we need the computed "ends" date
         self.assignAvailableSprints = function(version) {
@@ -233,7 +239,7 @@
         self.solve = function() {
             // Go through each sprint, from last to first
             self.sprintmanager = new Sprintmanager()
-        	self.sprints.reverseForEach(function(sprint) {
+            self.sprints.reverseForEach(function(sprint) {
                 console.log(" ** Sprint " + sprint.name +
                     " starts " + sprint.starts.toYMD() +
                     " ends " + sprint.ends.toYMD())
@@ -331,8 +337,8 @@
                 }
                 var sprint = new Sprint("v2."+i+".0", start_date);
 
-                // Only add future sprints
-                if(sprint.starts >= today) {
+                // Only add current or future sprints
+                if(sprint.ends >= today) {
                     sprints.add(sprint);
                 } else {
                     // If this sprint is not in the future, unset it and try 3 weeks later

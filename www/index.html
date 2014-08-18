@@ -92,7 +92,7 @@
       function render(vt) {
         var version_src = $("#version-template").html();
         var version_tpl = Handlebars.compile(version_src);
-        var table = {versions: vt.getActiveVersions(), sprints: vt.getActiveSprints()}
+        var table = {versions: vt.getActiveVersions(), sprints: vt.getActiveSprints(), config: vt.getConfig()}
         $("#content").html(version_tpl(table));
         $( ".postpone-version" ).click(postponeVersion);
 
@@ -107,17 +107,22 @@
 <body>
 <script id="version-template" type="text/x-handlebars-template">
 <div class="panel panel-default">
-  <div class="panel-heading">Versions</div>
+  <div class="panel-heading">Versions as of {{config.date}}</div>
   <div class="panel-body">
   {{#forEach versions}}
     {{> version}}
   {{/forEach}}
     <div class="row">
-      <div class="col-md-2">Sprint</div>
+      <div class="col-md-2">
+      <div>Sprint</div>
+      <div>Ends in week</div>
+      <div>Unused story points</div>
+      </div>
       {{#forEach sprints}}
         {{> sprint}}
       {{/forEach}}
     </div>
+    <div>Velocity: {{config.velocity}}</div>
   </div>
 </div>
 <!--
@@ -139,7 +144,7 @@
 <script id="version-partial" type="text/x-handlebars-template">
   <div class="row">
     <div class="col-md-2">
-      <div>{{id}}: {{name}}</div>
+      <div class="version_name" title="Version-id: {{id}}">{{name}}</div>
       <div><small>Due: {{simpleDate ends}}</small></div>
       <div><small>SP: {{inital_storypoints}}</small></div>
       <div><small>Unestimated guess: {{unestimated_points}}</small></div>
@@ -156,7 +161,6 @@
       </div>
     <button class="postpone-version btn btn-default btn-xs" data-version-id="{{id}}">+</button>
     </div>
-
   </div>
 </script>
 <script id="sprint-partial" type="text/x-handlebars-template">
@@ -182,6 +186,5 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container" id="content"></div>
-
 </body>
 </html>

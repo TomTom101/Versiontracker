@@ -19,3 +19,7 @@
 .postpone-version {
 	display: none;
 }
+.version_name {
+	font-weight: bold;
+}
+
