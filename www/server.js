@@ -7,14 +7,15 @@ var sys = require("sys"),
  cache = require('memory-cache'),
  auth_config = require('./auth.js'),
  static = require('node-static'),
- file = new static.Server('.');
+ file = new static.Server('.'),
+ cache_static = false;
 
 http.createServer(function(http_request,response){
 	var url_parts = url.parse(http_request.url, true);
    	response.setHeader("Access-Control-Allow-Origin", "*");
     request_url = url_parts.query.url
     if(request_url) {
-    	if(resp = cache.get(request_url)) {
+    	if(resp = cache.get(request_url) && cache_static) {
     		sys.puts("From cache");
     		response.write(resp)
     		response.end()
